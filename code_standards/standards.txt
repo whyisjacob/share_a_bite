@@ -1,3 +1,4 @@
 Below are coding standards
 
+!!!!!!NEVER COMMIT TO MASTER DIRECTLY!!!!!!
 Always do "git pull" BEFORE "git push" else we risk conflicting and overwriting changes
