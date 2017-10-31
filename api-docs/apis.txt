@@ -1,4 +1,4 @@
-Recipe API project
+USDA:
 usda recipe api key :
 
 
@@ -14,7 +14,6 @@ For additional support, please contact us. When contacting us, please tell us wh
 
 Account Email: andb.ferrer@gmail.com
 Account ID: c5b85daa-174e-446b-b245-69b24bea2f5e
-
 
 
 
