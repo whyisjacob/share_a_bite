@@ -1,1 +1,3 @@
 Below are coding standards
+
+Always do "git pull" BEFORE "git push" else we risk conflicting and overwriting changes
