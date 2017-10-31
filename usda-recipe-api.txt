@@ -1,0 +1,20 @@
+Recipe API project
+usda recipe api key :
+
+
+Your API key for andb.ferrer@gmail.com is:
+
+XT52z2JC6sB2yFirmsMslCGaAWkv2SSbmxe0Tfou
+
+
+You can start using this key to make web service requests. Simply pass your key in the URL when making a web request. Here's an example:
+
+https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=XT52z2JC6sB2yFirmsMslCGaAWkv2SSbmxe0Tfou&location=Denver+CO
+For additional support, please contact us. When contacting us, please tell us what API you're accessing and provide the following account details so we can quickly find you:
+
+Account Email: andb.ferrer@gmail.com
+Account ID: c5b85daa-174e-446b-b245-69b24bea2f5e
+
+
+
+
