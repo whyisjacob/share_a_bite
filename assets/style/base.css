@@ -47,3 +47,24 @@ body{
 .navigation>div:hover {
     background-color: #999;
 }
+
+
+@media screen and (max-width: 768px) {
+
+	    .menu {
+	    	display: inline;
+	    	float: left;
+	    	width: 33.33%;
+	    }
+		.branding {
+			display: inline;
+	    	float: left;
+	    	width: 33.33%;
+		}
+		.login {
+			display: inline;
+			float: left;	    	
+			width: 33.33%;
+		}
+		  
+}

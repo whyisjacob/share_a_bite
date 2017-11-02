@@ -56,3 +56,19 @@ h4 {
 h4>.glyphicon{
 	float: right;
 }
+h4>div{
+	font-size: 17px;
+	line-height: 28px;
+	color: #222;
+}
+.directions_image {
+    width: 50px;
+}
+.display {
+    display: inline;
+    /*padding:0 5%;*/
+}
+.disp{
+	text-align: center;
+	margin-top: 15px;
+}
