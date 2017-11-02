@@ -1,0 +1,34 @@
+/*#menu,
+#branding,
+#login {
+	float: left;
+}*/
+
+#sizing-addon1 {
+	position: static;
+
+}
+
+@media screen and (max-width: 768px) {
+  
+  		
+		#search-bar{
+			padding-top: 49px;
+		}
+	    .menu {
+	    	display: inline;
+	    	float: left;
+	    	width: 33.33%;
+	    }
+		.branding {
+			display: inline;
+	    	float: left;
+	    	width: 33.33%;
+		}
+		.login {
+			display: inline;
+			float: left;	    	
+			width: 33.33%;
+		}
+		  
+}
