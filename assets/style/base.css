@@ -1,0 +1,23 @@
+.navbar {
+	padding-top: 15px;
+    height: 70px;
+    border-bottom: 1px solid #999;
+}
+.menu {
+	padding-top: 5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.login {
+    text-align: right;
+    cursor: pointer;
+    font-size: 15px;
+
+}
+.branding {
+    margin: 0 auto;
+    text-align: center;
+}
+.hidden{
+	display: none;
+}
