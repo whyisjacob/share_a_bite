@@ -1,7 +1,11 @@
+body{
+	padding-top: 70px;
+}
 .navbar {
 	padding-top: 15px;
     height: 70px;
     border-bottom: 1px solid #999;
+    background: #fff;
 }
 .menu {
 	padding-top: 5px;
@@ -20,4 +24,7 @@
 }
 .hidden{
 	display: none;
+}
+.footer{
+	text-align: center;
 }
