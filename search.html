@@ -6,20 +6,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
+	<link rel="stylesheet" type="text/css" href="assets/style/search.css">
 <!-- 	<link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
 </head>
 <body>
-	<div>
+	<nav class="navbar navbar-fixed-top">
+		<div class="container">
+			<div class="col-sm-3 menu" id="menu">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			</div>
+			<div class="col-sm-6 branding" id="branding">
+				<img src="http://via.placeholder.com/150x50" alt="">
+			</div>
+			<div class="col-sm-3 login" id="login">
+				Login <span class="glyphicon glyphicon-user"></span><br>
+				Search <span class="glyphicon glyphicon-search"></span>
+			</div>
+
+		</div>
+	</nav>
+
+	<div class="container-fluid">
 		<div class="row">
-			<div class="jumbotron text-center">
-			  <h1>share a bite</h1>
-				<div class="input-group input-group-lg col-sm-8 col-sm-offset-2">
-				  <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
-				  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-				</div>			
+			<div class="jumbotron text-center" id="search-bar">
+			  <h2>share a bite.</h2>
+			  	<p>Our favorite recipes come with more than wonderful smells and refreshing tasts. The memories of our lives come back with these senses.</p>
+					<div class="input-group input-group-lg col-sm-6 col-sm-offset-3">
+					  <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
+					  <input type="text" class="form-control" placeholder="hungry?" aria-describedby="sizing-addon1">
+					</div>			
 			</div>
 		</div>
 	</div>
 	
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 </body>
 </html>
