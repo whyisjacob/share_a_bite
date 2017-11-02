@@ -1,9 +1,7 @@
-/*#menu,
-#branding,
-#login {
-	float: left;
-}*/
 
+.jumbotron {
+	background-color: white;
+}
 #sizing-addon1 {
 	position: static;
 
