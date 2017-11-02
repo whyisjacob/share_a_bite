@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 
-	<title>Employee Time Sheet</title>
+	<title>CHANGE ME BASED ON RECIPE TITLE</title>
 
 
 
@@ -155,6 +155,15 @@
 		<a href="#">Terms of Use</a> <br><br>
 	</footer>
 
+
+	<!--=========
+	NAVIGATION Menu
+	=========-->
+	<aside id="navigation" class="navigation hidden">
+		<div>Home</div>
+		<div>Account</div>
+		<div>3rd Item</div>
+	</aside>
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 <script src="assets/js/timeago.js"></script>
 
@@ -163,6 +172,9 @@
 	  jQuery("time.timeago").timeago();
 	});
 
+	/**
+	* @description Displays contents of recipe sections
+	*/
 	$('h4').on('click', function(){
 		var display = $(this).attr('data-display');
 		if(display == 'hidden'){
@@ -174,6 +186,17 @@
 			$(this).children('span').attr('class', 'glyphicon glyphicon-menu-right');
 			$(this).siblings('div').addClass('hidden');
 		}
+	})
+
+
+	/**
+	* @description Menu Display
+	*/
+	$('#menu').on('click',function(){
+		$('#navigation').toggleClass('hidden');
+	})
+	$('article').on('click',function(){
+		$('#navigation').addClass('hidden');
 	})
 </script>
 
