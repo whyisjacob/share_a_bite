@@ -70,5 +70,16 @@ h4>div{
 }
 .disp{
 	text-align: center;
-	margin-top: 15px;
+	margin: 15px 0;
+}
+.steps>h5 {
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.steps>p {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 30px;
+    letter-spacing: .5px;
 }
