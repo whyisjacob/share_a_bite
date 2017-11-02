@@ -87,11 +87,21 @@
 					This recipe is sooo yummy it's my favoritest recipe EVER! I remember when i first had this yummy, delicious, fantabulous recipe.
 				</p>	
 			</section>
-			<section id="ingredients" class="ingredients">
-				<h4>
+
+			<section>
+				<h4 data-display="hidden">
 					Ingredients <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</h4>
+				<div id="ingredients" class="ingredients hidden">bla bla bla</div>
 			</section>
+
+			<section>
+				<h4 data-display="hidden">
+					Put it all together <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+				</h4>
+				<div id="ingredients" class="ingredients hidden">bla bla bla</div>
+			</section>
+
 		</article>
 
 		<!--Add display on medium and large screen-->
@@ -115,6 +125,19 @@
 	jQuery(document).ready(function() {
 	  jQuery("time.timeago").timeago();
 	});
+
+	$('h4').on('click', function(){
+		var display = $(this).attr('data-display');
+		if(display == 'hidden'){
+			$(this).attr('data-display','show');
+			$(this).children('span').attr('class', 'glyphicon glyphicon-menu-down');
+			$(this).siblings('div').removeClass('hidden');
+		} else {
+			$(this).attr('data-display','hidden');
+			$(this).children('span').attr('class', 'glyphicon glyphicon-menu-right');
+			$(this).siblings('div').addClass('hidden');
+		}
+	})
 </script>
 
 </body>
