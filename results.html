@@ -173,15 +173,6 @@
 		<a href="#">Terms of Use</a> <br><br>
 	</footer>
 
-
-	<!--=========
-	NAVIGATION Menu
-	=========-->
-	<aside id="navigation" class="navigation hidden">
-		<div>Home</div>
-		<div>Account</div>
-		<div>3rd Item</div>
-	</aside>
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
@@ -189,6 +180,7 @@
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
 $(document).ready(function(){
+	$('#nav').load('assets/includes/head.txt')
 
   // Initialize Firebase
   var config = {
@@ -201,7 +193,6 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
 
-  $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
 
 
 

@@ -69,17 +69,10 @@
 	</footer>
 
 
-	<!--=========
-	NAVIGATION Menu
-	=========-->
-	<aside id="navigation" class="navigation hidden">
-		<div>Home</div>
-		<div>Account</div>
-		<div>3rd Item</div>
-	</aside>
 <script>
 $(document).ready(function(){
 	$('#nav').load('assets/includes/head.txt')
+	$('#footer').load('assets/includes/head.txt')
 
 	var provider = new firebase.auth.GoogleAuthProvider();
 	firebase.auth().signInWithPopup(provider).then(function(result) {

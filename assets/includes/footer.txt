@@ -3,16 +3,5 @@
 <a href="#">Privacy Policy</a> |
 <a href="#">Terms of Use</a> <br><br>
 
-	<!--=========
-	NAVIGATION Menu
-	=========-->
-<aside id="navigation" class="navigation hidden">
-	<div>Home</div>
-	<div>Account</div>
-	<div>3rd Item</div>
-</aside>
-
-
 <script src="assets/js/timeago.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
