@@ -112,6 +112,13 @@ $('#googleLogin').on('click',function(){
 		// The signed-in user info.
 		var user = result.user;
 		console.log(user.displayName)
+	}).success(function(data){
+		// `googleUser` from the onsuccess Google Sign In callback.
+		var credential = firebase.auth.GoogleAuthProvider.credential(
+		              googleUser.getAuthResponse().id_token);
+		firebase.auth().signInWithCredential(credential)
+		console.log(credential)
+
 	});
 })
 
