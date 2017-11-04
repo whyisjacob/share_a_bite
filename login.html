@@ -111,9 +111,13 @@ $(document).ready(function(){
    var token = result.credential.accessToken;
    console.log(token)
    // The signed-in user info.
-   var user = result.user;
-   console.log(user)
+   var user = result.user.ya;
+   console.log(user.displayName)
   });
+
+  // if (user.emailVerified){
+  // 	window.location "user.html"
+  // }
 
 
 });
