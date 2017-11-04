@@ -79,7 +79,7 @@
 	</aside>
 <script>
 $(document).ready(function(){
-	$('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
+	$('#nav').load('assets/includes/head.txt')
 
 	var provider = new firebase.auth.GoogleAuthProvider();
 	firebase.auth().signInWithPopup(provider).then(function(result) {

@@ -26,11 +26,9 @@
     firebase.initializeApp(config);
 
 
-    $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
-
     var defaultAuth = firebase.auth();
     </script>
-    
+
 <div class="container">
 	<div class="col-sm-3 menu" id="menu">
 		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
