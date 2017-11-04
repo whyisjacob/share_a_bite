@@ -4,11 +4,11 @@ $( document ).ready(function() {
 		console.log("glyphicon clicked");
 		var query = $("#search-input").val().trim();
 		console.log(query);	
-		var link = $("#sizing-addon1").attr("data-link");
+		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html"
 		console.log(link);
 
 	// this might just be hardcoded, trying to avoid CORS issues
-	$("#sizing-addon1").load(link);
+	$(".container-fluid").load(link);
 	});
 
 
