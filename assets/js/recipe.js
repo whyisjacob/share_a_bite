@@ -22,9 +22,9 @@ jQuery(document).ready(function() {
 	/**
 	* @description Menu Display
 	*/
-	$('#menu').on('click',function(){
+	$(document).on('click','#menu', function(){
 		$('#navigation').toggleClass('hidden');
 	})
-	$('article').on('click',function(){
+	$(document).on('click', 'article', function(){
 		$('#navigation').addClass('hidden');
 	})

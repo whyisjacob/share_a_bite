@@ -203,19 +203,25 @@
 $(document).ready(function(){
 
 
-$.ajax({
-    url:'assets/includes/head.txt',
-    success: function (data){
-    	console.log('a');
-    	console.log(data)
-    	$('#nav').html(data)
-      //parse your data here
-      //you can split into lines using data.split('\n') 
-      //an use regex functions to effectively parse it
-    }
-  });	
-	console.log('bla')
-})
+// $.ajax({
+//     url:'assets/includes/head.txt',
+//     method:'GET',
+//     success: function (data){
+//     	console.log('a');
+//     	console.log(data)
+//     	$('#nav').html(data)
+//       //parse your data here
+//       //you can split into lines using data.split('\n') 
+//       //an use regex functions to effectively parse it
+//     }
+//   });	
+// 	console.log('bla')
+// })
+
+	$('#nav').load('assets/includes/head.txt')
+
+
+});
 </script>
 
 </body>
