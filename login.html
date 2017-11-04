@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+
+	<title>CHANGE ME BASED ON RECIPE TITLE</title>
+
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
+	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
+
+<style>
+
+</style>
+</head>
+<body>
+	<nav id="nav" class="navbar navbar-fixed-top">
+		<!-- <div class="container">
+			<div class="col-sm-3 menu" id="menu">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			</div>
+			<div class="col-sm-6 branding">
+				<img src="http://via.placeholder.com/150x50" alt="">
+			</div>
+			<div class="col-sm-3 login">
+				<a href="user.html">Login <span class="glyphicon glyphicon-user"></span></a><br>
+				Search <span class="glyphicon glyphicon-search"></span>
+			</div>
+		</div> -->
+	</nav>
+	<div class="container-fluid">
+
+	<div class="row">
+		<section class="col-sm-12 login">
+			<label for="username"></label>
+			<input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="username" name="username">
+
+			<label for="pw"></label>
+			<input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" id="pw" name="pw">
+
+		</section>
+	</div>
+		
+	</div>
+
+	<footer id="footer" class="footer">
+		<hr>
+		© 2017 Share a Bite, Inc. All Rights reserved. 
+		<a href="#">Privacy Policy</a> |
+		<a href="#">Terms of Use</a> <br><br>
+	</footer>
+
+
+	<!--=========
+	NAVIGATION Menu
+	=========-->
+	<aside id="navigation" class="navigation hidden">
+		<div>Home</div>
+		<div>Account</div>
+		<div>3rd Item</div>
+	</aside>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="assets/js/timeago.js"></script>
+<script src="assets/js/recipe.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+$(document).ready(function(){
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+    projectId: "grab-a-bite-df6c2",
+    storageBucket: "grab-a-bite-df6c2.appspot.com",
+    messagingSenderId: "915542502205"
+  };
+  firebase.initializeApp(config);
+
+
+  $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
+
+  var defaultAuth = firebase.auth();
+  console.log(defaultAuth)
+  
+  // Using a popup.
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+   // This gives you a Google Access Token.
+   var token = result.credential.accessToken;
+   // The signed-in user info.
+   var user = result.user;
+  });
+
+
+});
+</script>
+
+</body>
+
+</html>
+
