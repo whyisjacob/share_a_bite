@@ -203,6 +203,11 @@ $(document).ready(function(){
 
   $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
 
+  // `googleUser` from the onsuccess Google Sign In callback.
+  var credential = firebase.auth.GoogleAuthProvider.credential(
+                googleUser.getAuthResponse().id_token);
+  firebase.auth().signInWithCredential(credential)
+  console.log(credential)
 
 
 
