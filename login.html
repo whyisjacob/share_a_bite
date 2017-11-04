@@ -49,12 +49,9 @@
 
 	<div class="row">
 		<section class="col-sm-12 login">
-			<label for="username"></label>
-			<input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="username" name="username">
-
-			<label for="pw"></label>
-			<input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" id="pw" name="pw">
-
+			<button id="googleLogin">
+				Login using <img src="https://www.underconsideration.com/brandnew/archives/google_2015_logo_detail.png">
+			</button>
 		</section>
 	</div>
 		
@@ -100,20 +97,23 @@ $(document).ready(function(){
 
   var defaultAuth = firebase.auth();
 
-  // Using a popup.
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('email');
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-  	console.log(provider)
-  	console.log(result)
-   // This gives you a Google Access Token.
-   var token = result.credential.accessToken;
-   console.log(token)
-   // The signed-in user info.
-   var user = result.user;
-   console.log(user.displayName)
-  });
+
+$('#googleLogin').on('click',function(){
+	// Using a popup.
+	var provider = new firebase.auth.GoogleAuthProvider();
+	provider.addScope('profile');
+	provider.addScope('email');
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+		console.log(provider)
+		console.log(result)
+		// This gives you a Google Access Token.
+		var token = result.credential.accessToken;
+		console.log(token)
+		// The signed-in user info.
+		var user = result.user;
+		console.log(user.displayName)
+	});
+})
 
   // if (user.emailVerified){
   // 	window.location "user.html"
