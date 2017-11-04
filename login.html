@@ -26,6 +26,10 @@
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
+
+	<script src="assets/js/timeago.js"></script>
+	<script src="assets/js/recipe.js"></script>
+
 <style>
 
 </style>
@@ -73,54 +77,30 @@
 		<div>Account</div>
 		<div>3rd Item</div>
 	</aside>
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-<script src="assets/js/timeago.js"></script>
-<script src="assets/js/recipe.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
 $(document).ready(function(){
+	$('#nav').load('assets/includes/head.txt')
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-    projectId: "grab-a-bite-df6c2",
-    storageBucket: "grab-a-bite-df6c2.appspot.com",
-    messagingSenderId: "915542502205"
-  };
-  firebase.initializeApp(config);
-
-
-  $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
-
-  var defaultAuth = firebase.auth();
-
-
-$('#googleLogin').on('click',function(){
-	// Using a popup.
 	var provider = new firebase.auth.GoogleAuthProvider();
-	provider.addScope('profile');
-	provider.addScope('email');
 	firebase.auth().signInWithPopup(provider).then(function(result) {
-		console.log(provider)
-		console.log(result)
-		// This gives you a Google Access Token.
-		var token = result.credential.accessToken;
-		console.log(token)
-		// The signed-in user info.
-		var user = result.user;
-		console.log(user.displayName)
+	// This gives you a Google Access Token. You can use it to access the Google API.
+	var token = result.credential.accessToken;
+	// The signed-in user info.
+	var user = result.user;
+	// ...
+	}).catch(function(error) {
+	// Handle Errors here.
+	var errorCode = error.code;
+	var errorMessage = error.message;
+	// The email of the user's account used.
+	var email = error.email;
+	// The firebase.auth.AuthCredential type that was used.
+	var credential = error.credential;
+	// ...
 	});
-})
-
-  // if (user.emailVerified){
-  // 	window.location "user.html"
-  // }
-
 
 });
+
 </script>
 
 </body>
