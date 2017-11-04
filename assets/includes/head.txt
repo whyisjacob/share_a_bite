@@ -1,3 +1,35 @@
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+$(document).ready(function(){
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+    projectId: "grab-a-bite-df6c2",
+    storageBucket: "grab-a-bite-df6c2.appspot.com",
+    messagingSenderId: "915542502205"
+  };
+  firebase.initializeApp(config);
+
+
+  $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
+
+  var defaultAuth = firebase.auth();
+  </script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+  <script src="https://www.gstatic.com/firebasejs/ui/2.4.1/firebase-ui-auth__en.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/2.4.1/firebase-ui-auth.css" />
+
+
 <div class="container">
 	<div class="col-sm-3 menu" id="menu">
 		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
