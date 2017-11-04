@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
 	/**
 	* @description Displays contents of recipe sections
 	*/
-	$('h4').on('click', function(){
+	$(document).on('click','h4', function(){
 		var display = $(this).attr('data-display');
 		if(display == 'hidden'){
 			$(this).attr('data-display','show');

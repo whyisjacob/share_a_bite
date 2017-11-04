@@ -27,8 +27,6 @@
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
 
-	<script src="assets/js/timeago.js"></script>
-	<script src="assets/js/recipe.js"></script>
 
 <style>
 
@@ -50,29 +48,35 @@
 		</div> -->
 	</nav>
 	<div class="container-fluid">
-
-	<div class="row">
-		<section class="col-sm-12 login">
-			<button id="googleLogin">
-				Login using <img src="https://www.underconsideration.com/brandnew/archives/google_2015_logo_detail.png">
-			</button>
-		</section>
-	</div>
+		<h2>Welcome <span id='username'></span>!</h2>
 		
 	</div>
 
 	<footer id="footer" class="footer">
-		<hr>
-		© 2017 Share a Bite, Inc. All Rights reserved. 
-		<a href="#">Privacy Policy</a> |
-		<a href="#">Terms of Use</a> <br><br>
 	</footer>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 
 
 <script>
 $(document).ready(function(){
 	$('#nav').load('assets/includes/head.txt')
-	$('#footer').load('assets/includes/head.txt')
+	$('#footer').load('assets/includes/footer.txt')
+
+
+
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+      authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+      databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+      projectId: "grab-a-bite-df6c2",
+      storageBucket: "grab-a-bite-df6c2.appspot.com",
+      messagingSenderId: "915542502205"
+    };
+    firebase.initializeApp(config);
+
+    var defaultAuth = firebase.auth();
+
 
 	var provider = new firebase.auth.GoogleAuthProvider();
 	firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -80,6 +84,10 @@ $(document).ready(function(){
 	var token = result.credential.accessToken;
 	// The signed-in user info.
 	var user = result.user;
+	console.log(user)
+	if(user.I){
+		$('#username').html(user.displayName)
+	}
 	// ...
 	}).catch(function(error) {
 	// Handle Errors here.
