@@ -31,8 +31,8 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-fixed-top">
-		<div class="container">
+	<nav id="nav" class="navbar navbar-fixed-top">
+		<!-- <div class="container">
 			<div class="col-sm-3 menu" id="menu">
 				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 			</div>
@@ -43,8 +43,7 @@
 				Login <span class="glyphicon glyphicon-user"></span><br>
 				Search <span class="glyphicon glyphicon-search"></span>
 			</div>
-
-		</div>
+		</div> -->
 	</nav>
 	<div class="container-fluid r-container">
 
@@ -187,8 +186,35 @@
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
-	
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+    projectId: "grab-a-bite-df6c2",
+    storageBucket: "grab-a-bite-df6c2.appspot.com",
+    messagingSenderId: "915542502205"
+  };
+  firebase.initializeApp(config);
+
+
+$(document).ready(function(){
+
+
+$.ajax({
+    url:'assets/includes/head.txt',
+    success: function (data){
+    	console.log('a');
+    	console.log(data)
+      //parse your data here
+      //you can split into lines using data.split('\n') 
+      //an use regex functions to effectively parse it
+    }
+  });	
+	console.log('bla')
+})
 </script>
 
 </body>

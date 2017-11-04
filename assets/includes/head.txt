@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="col-sm-3 menu" id="menu">
+		<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+	</div>
+	<div class="col-sm-6 branding">
+		<img src="http://via.placeholder.com/150x50" alt="">
+	</div>
+	<div class="col-sm-3 login">
+		Login <span class="glyphicon glyphicon-user"></span><br>
+		Search <span class="glyphicon glyphicon-search"></span>
+	</div>
+</div>
