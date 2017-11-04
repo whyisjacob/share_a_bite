@@ -27,6 +27,22 @@
 	</div>
 </div>
 
+<div class="container-fluid r-container">
+	<!--Add display on small and xs screen-->
+	<aside class="col-md-2 visible-xs-block visible-sm-block hidden-md hidden-lg hidden-print">
+		<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Grab A Bite -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-7521264905632007"
+		     data-ad-slot="3529081166"
+		     data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</aside>
+</div>
+
 
 <!--=========
 NAVIGATION Menu Popup
@@ -34,7 +50,7 @@ NAVIGATION Menu Popup
 <aside id="navigation" class="navigation hidden">
 	<div><a href="index.html">Home</a></div>
 	<div><a href="user.html">Account</a></div>
-	<!-- <div><a href="search.html">Search</a></div> -->
+	<div><a href="new_recipe.html">Create a New Recipe</a></div>
 </aside>
 
 

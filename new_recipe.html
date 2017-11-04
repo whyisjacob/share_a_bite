@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+
+	<title>CHANGE ME BASED ON RECIPE TITLE</title>
+
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
+	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
+
+
+
+<style>
+
+</style>
+</head>
+<body>
+	<nav id="nav" class="navbar navbar-fixed-top">
+		<!-- <div class="container">
+			<div class="col-sm-3 menu" id="menu">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			</div>
+			<div class="col-sm-6 branding">
+				<img src="http://via.placeholder.com/150x50" alt="">
+			</div>
+			<div class="col-sm-3 login">
+				<a href="user.html">Login <span class="glyphicon glyphicon-user"></span></a><br>
+				Search <span class="glyphicon glyphicon-search"></span>
+			</div>
+		</div> -->
+	</nav>
+	<div class="container-fluid">
+		<section class='col-sm-10'>
+			<h2>Add a new recipe</h2>
+
+			<label for="recipe_name">Recipe Name</label>
+			<input type="text" class="form-control" placeholder="Recipe Name " aria-describedby="sizing-addon2" name='recipe_name' id="recipe_name">
+			<br>
+			<label for="recipe_name">Recipe Story</label>
+			<input type="textarea" class="form-control" placeholder="Recipe Story" aria-describedby="sizing-addon2" name='recipe_name' id="recipe_name">
+			<br>
+			<label for="">Ingredients</label>
+			<input type="text" class="form-control" placeholder="Ingredients" aria-describedby="sizing-addon2" name='ingredient_1' id="ingredient_1">
+			<br>
+			<label for="ovtemp">Oven Temperature</label>
+			<input type="number" class="form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp' id="ovtemp">
+			<br>
+			<label for="cooktime">Cook/Prep Time</label>
+			<input type="number" class="form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)" aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
+			<br>
+			<label for="servings">Servings</label>
+			<input type="number" class="form-control" placeholder="Total Servings" aria-describedby="sizing-addon2" name='servings' id="servings">
+			<br>
+			<label for="servings">Directions</label>
+			<input type="text" class="form-control" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name='directions1' id="directions1">
+
+		</section>
+		<!--Add display on medium and large screen-->
+		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
+			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Grab A Bite -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-7521264905632007"
+			     data-ad-slot="3529081166"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</aside>
+
+		
+	</div>
+
+	<footer id="footer" class="footer">
+	</footer>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	$('#nav').load('assets/includes/head.txt')
+	$('#footer').load('assets/includes/footer.txt')
+
+
+
+
+
+	
+
+});
+
+</script>
+
+</body>
+
+</html>
+

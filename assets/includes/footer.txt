@@ -5,4 +5,21 @@
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+  authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+  databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+  projectId: "grab-a-bite-df6c2",
+  storageBucket: "grab-a-bite-df6c2.appspot.com",
+  messagingSenderId: "915542502205"
+};
+firebase.initializeApp(config);
+
+var defaultAuth = firebase.auth();
+console.log(defaultAuth)
+
+</script>
