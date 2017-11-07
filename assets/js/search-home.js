@@ -6,7 +6,7 @@ $( document ).ready(function() {
 		var query = $("#search-input").val().trim();
 
 		console.log(query);	
-		
+
 		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html"
 
 	// this might just be hardcoded, trying to avoid CORS issues
@@ -23,14 +23,17 @@ $( document ).ready(function() {
 		  // };
 
 		  // firebase.initializeApp(config);
-
+https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free
 //edamam api data
 var appId = "c26ba31b";
 var apiKey = "0e164b393b7346efa7e6769658022a14";
-var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=${" + appId + "}&app_key=${" + apiKey + "}&from=0&to=6";
+var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + appId + "&app_key=" + apiKey + "&from=0&to=6&callback=";
  
 $.ajax({
       url: queryUrl,
+		 // jsonp: "callback",
+   //  // Tell jQuery we're expecting JSONP
+   //  dataType: "jsonp",
       method: "GET"
     }).done(function(response) {
       console.log(response);
