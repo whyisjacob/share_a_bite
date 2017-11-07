@@ -86,7 +86,7 @@
 
 			<br>
 
-			<button id="addrecipe" class="btn btn-primary ">Add Now</button>
+			<button id="addrecipe" class="btn btn-primary" onclick='addrecipe()'>Add Now</button>
 
 		</section>
 		<!--Add display on medium and large screen-->
@@ -116,7 +116,8 @@
 
 
 <script>
-$(document).ready(function(){
+// $(document).ready(function(){
+
 	var ingNum = 2,
 		dirNum = 2,
 		uEmail,
@@ -186,7 +187,9 @@ $(document).ready(function(){
 	})
 
 
-	$('#addrecipe').on('click', function(){
+	function addrecipe(){
+		firebase.initializeApp(config);
+
 		var rName = $('#recipe_name').val(),
 			rStory = $('#recipe_story').val(),
 			ringredients = [],
@@ -208,7 +211,7 @@ $(document).ready(function(){
 
 		console.log(uEmail);
 
-		database.ref('recipes/' + uid + '/' + rName).set({
+		var postData={
 			enterBy:displayName,
 			user:uid,
 			rName: rName,
@@ -218,12 +221,18 @@ $(document).ready(function(){
 			oTemp: oTemp,
 			rTime: rTime,
 			rServings: rServings
-		});
+		}
+		var newPostKey = firebase.database().ref().child('recipes').push().key;
+		var updates = {};
+		updates['public-recipes/' + newPostKey] = postData;
+		updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+		return database.ref().update(updates);
+		// database.ref('recipes/' + uid + '/' + rName).set(newData);
 
 
-	})//('#addrecipe').on('click'
+	}//addrecipe
 
-});
+// });
 
 </script>
 
