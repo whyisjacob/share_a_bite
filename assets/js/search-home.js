@@ -23,20 +23,25 @@ $( document ).ready(function() {
 		  // };
 
 		  // firebase.initializeApp(config);
-https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free
+//https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free
 //edamam api data
 var appId = "c26ba31b";
 var apiKey = "0e164b393b7346efa7e6769658022a14";
-var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + appId + "&app_key=" + apiKey + "&from=0&to=6&callback=";
- 
+var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + appId + "&app_key=" + apiKey + "&from=0&to=6&callback=myfunc";
+var myfunc = function (json) {
+  alert(json);
+}
 $.ajax({
-      url: queryUrl,
-		 // jsonp: "callback",
-   //  // Tell jQuery we're expecting JSONP
-   //  dataType: "jsonp",
-      method: "GET"
+     url: queryUrl,
+     method: "GET",
+     dataType: 'jsonp', 
+     jsonpCallback: 'myfunc', 
+ 	 jsonp: 'callback'
+ 	 // success: myfunc(json){
+ 	 // 	alert(json);
+ 	 // }
     }).done(function(response) {
-      console.log(response);
+    	console.log(response);
 
     });
 
