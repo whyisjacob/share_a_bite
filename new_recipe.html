@@ -70,7 +70,7 @@
 			<input type="number" class="form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp' id="ovtemp">
 			<br>
 
-			<label for="cooktime">Cook/Prep Time</label>
+			<label for="cooktime">Cook/Prep Time (minutes)</label>
 			<input type="number" class="form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)" aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
 			<br>
 
@@ -209,7 +209,12 @@
 			rDirections.push(v);
 		})
 
-		console.log(uEmail);
+		$('.col-sm-10').html('<h2>Your Recipe has been added</h2>')
+		window.location = '#'
+		setTimeout(function(){
+			reloadPage()
+		}, 4000);
+
 
 		var postData={
 			enterBy:displayName,
@@ -229,10 +234,12 @@
 		return database.ref().update(updates);
 		// database.ref('recipes/' + uid + '/' + rName).set(newData);
 
-		$('.col-sm-10').html('<h2>Your Recipe has been added</h2>')
 
 	}//addrecipe
 
+	function reloadPage(){
+		location.reload()
+	}
 // });
 
 </script>
