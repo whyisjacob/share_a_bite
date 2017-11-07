@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/search.css">
 </head>
-<body>
+<body class="img-responsive">
 	<nav id="nav" class="navbar navbar-fixed-top">
 		<!-- <div class="container">
 			<div class="col-sm-3 menu" id="menu">
@@ -25,13 +25,15 @@
 			</div>
 		</div> -->
 	</nav>
+	
+	<div id="main-image">
 
-	<div class="container-fluid"
-	id="main">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="jumbotron text-center" id="search-bar">
-			  <h2>share a bite.</h2>
-			  	<p>Our favorite recipes come with more than wonderful smells and refreshing tasts. The memories of our lives come back with these senses.</p>
+			  <h2><span class="text-center" id="title">share a bite</span></h2>
+			  	<p>Welcome to Share a Bite.
+			  	Our mission is to preserve your cherished family recipes. We understand that a food recipe is more than a set of instructions or ingredients that simply create a meal. A great family recipe has a story. It has the power to unite loved ones, and become a source of some of the best family memories. So share your family recipe, share its story and let's inspire the next generation to Share A Bite.</p>
 					<div class="input-group input-group-lg col-sm-6 col-sm-offset-3">
 					  <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1" data-link="recipe-list.html"><a href="recipe-list.html" title="list-results"></a></span>
 					  <input type="text" class="form-control" placeholder="hungry?" aria-describedby="sizing-addon1" id="search-input">
@@ -39,6 +41,15 @@
 			</div>
 		</div>
 	</div>
+	<!--main image closing-->
+	</div>
+
+	<footer id="footer" class="footer">
+		<hr>
+		© 2017 Share a Bite, Inc. All Rights reserved. 
+		<a href="#">Privacy Policy</a> |
+		<a href="#">Terms of Use</a> <br><br>
+	</footer>
 	
 	<script
 	src="https://code.jquery.com/jquery-3.2.1.min.js"
