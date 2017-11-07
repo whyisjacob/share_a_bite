@@ -1,6 +1,8 @@
-	$(document).on('click','#menu', function(){
-		$('#navigation').toggleClass('hidden');
-	})
-	$(document).on('click', 'article', function(){
-		$('#navigation').addClass('hidden');
-	})
+// Initialize Firebase
+
+$(document).on('click','#menu', function(){
+	$('#navigation').toggleClass('hidden');
+})
+$(document).on('click', 'article', function(){
+	$('#navigation').addClass('hidden');
+})
