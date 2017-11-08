@@ -37,11 +37,17 @@ $.ajax({
      dataType: 'jsonp', 
      jsonpCallback: 'myfunc', 
  	 jsonp: 'callback'
- 	 // success: myfunc(json){
- 	 // 	alert(json);
- 	 // }
+ 	 
     }).done(function(response) {
     	console.log(response);
+    	console.log(response.hits[0]);
+    	console.log(response.hits[0].recipe.calories);
+
+    	//three section elements
+    	// one for recipe title and added by
+    	//one for "perfect for breakfast lunch dinner"
+    	//one for for brief description
+
 
     });
 

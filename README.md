@@ -9,6 +9,7 @@ TODO
 • truncated search results, potentially with http://dotdotdot.frebsite.nl/
 • implement "branding" elements: images, logos, relevant & consistent visual cues
 • enable search functionality by creating a page that pulls results from firebase. This will recall recipe items, located in divs/etc., that are chosen through some selection logic in JS that relates the recipe to the search query. 
-
+• add search function to 'enter' key-up on main page
+• add search function to 'enter' key-up on main page
 
 
