@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 
-	<title>CHANGE ME BASED ON RECIPE TITLE</title>
+	<title>My Account</title>
 
 
 
@@ -48,14 +48,27 @@
 	<div class="container-fluid">
 
 	<div class="row">
-		<section class="col-sm-12 login">
-			<label for="username"></label>
-			<input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" id="username" name="username">
+		<section class="col-sm-10">
+			<h1>My Recently Added Recipes</h1>
 
-			<label for="pw"></label>
-			<input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" id="pw" name="pw">
+			<article id="user_recipes">
+			</article>
 
 		</section>
+		<!--Add display on medium and large screen-->
+		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
+			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Grab A Bite -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-7521264905632007"
+			     data-ad-slot="3529081166"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</aside>
+
 	</div>
 		
 	</div>
@@ -76,15 +89,23 @@
 		<div>Account</div>
 		<div>3rd Item</div>
 	</aside>
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
+var uEmail,
+	displayName,
+	emailVerified,
+	photoURL,
+	isAnonymous,
+	uid,
+	providerData;
+
+
 $(document).ready(function(){
 
-  // Initialize Firebase
+  $('#nav').load('assets/includes/head.txt')
   var config = {
     apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
     authDomain: "grab-a-bite-df6c2.firebaseapp.com",
@@ -94,27 +115,41 @@ $(document).ready(function(){
     messagingSenderId: "915542502205"
   };
   firebase.initializeApp(config);
+  var database = firebase.database();
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      console.log(user);
+      $('#user').html(user.displayName)
+      uid = user.uid;
+
+      database.ref('/user-recipes/' + uid).orderByKey();
+      database.ref('/user-recipes/' + uid).orderByKey().once("value")
+        .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+
+          	//recipy key
+            var key = childSnapshot.key;
+            console.log(key)
+
+            //recipe data
+            var childData = childSnapshot.val();
+            console.log(childData)
+
+            $('#user_recipes').append('<div class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </div>')
+
+        });
+      });
 
 
-  $('#nav').load('https://whyisjacob.github.io/share_a_bite/assets/includes/head.txt')
 
-  var defaultAuth = firebase.auth();
-  console.log(defaultAuth)
-  // Using a redirect.
-  firebase.auth().getRedirectResult().then(function(result) {
-    if (result.credential) {
-      // This gives you a Google Access Token.
-      var token = result.credential.accessToken;
+
+    } else {
+      // No user is signed in.
+      console.log('User not logged in')
     }
-    var user = result.user;
   });
-
-  // Start a sign in process for an unauthenticated user.
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('email');
-  firebase.auth().signInWithRedirect(provider);
-
 
 });
 </script>

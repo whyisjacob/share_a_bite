@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 
-	<title>CHANGE ME BASED ON RECIPE TITLE</title>
+	<title id="title"></title>
 
 
 
@@ -32,25 +32,14 @@
 </head>
 <body>
 	<nav id="nav" class="navbar navbar-fixed-top">
-		<!-- <div class="container">
-			<div class="col-sm-3 menu" id="menu">
-				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-			</div>
-			<div class="col-sm-6 branding">
-				<img src="http://via.placeholder.com/150x50" alt="">
-			</div>
-			<div class="col-sm-3 login">
-				Login <span class="glyphicon glyphicon-user"></span><br>
-				Search <span class="glyphicon glyphicon-search"></span>
-			</div>
-		</div> -->
+
 	</nav>
 	<div class="container-fluid r-container">
 		<article class="col-md-10">
 			<section class='recipe'>
-				<h2 id="recipe_name" class="recipe_name">Lasagna A-La Mode</h2>
+				<h2 id="recipe_name" class="recipe_name"></h2>
 				<h3>
-					Added By: <a href="#" id="addby">James Rodger</a>,
+					Added By: <a href="user.html" id="addby"></a>,
 					<time class="time timeago" datetime="2017-11-01"></time>
 				</h3>
 			</section>
@@ -71,14 +60,7 @@
 					The Story <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
 				</h4>
 				<div id="story" class="description ">
-					She was not what anyone would call pretty. The face was sad, pixie-like. Blonde curly bits attempted scraggly escapes from beneath the beat up baseball cap. She sat, thin shoulders hunched like she was trying to hide the girlie parts beneath that big blue shirt. I couldn't take my eyes off her. I feared she would disappear into the caverns of the mega-mall where I had first begun to follow her.
-					Now, perched across from her at the crowded coffee bar, I sipped my latte---peeking upwards and sideways though wary eyelashes so watching would not be obvious. Had she been warned about not speaking to strangers? Should I risk it? Would she make a scene? How much should I offer her?
-					<br><br>
-					I caught the eye of a matron. She pursed her lips and gave me the squinty-eyed "I don't approve of you pervert types" glare. Then, the girl spoke first, " Mister, can I bum a smoke?"
-					<br><br>
-					My chance. I had to be tactful. "Sure," I mumbled. "But first I have to ask you a question?" I breathed deeply. "That blue shirt you're wearing... did you, ah, get it at the Salvation Army?"
-					<br><br>
-					Her eyes widened. The thin neck snapped back as if smacked by the poverty police. Before she could scream or run away I blurted, "It was mine, a favorite---won it bowling. See, my name, Chuck, on the sleeve. My wife, she accidentally donated it. I would really like to buy it back."
+					
 				</div>
 			</section>
 
@@ -87,17 +69,7 @@
 					Ingredients <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 				</h4>
 				<div id="ingredients" class="ingredients hidden">
-					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
+					<ul id="ingredients_list">
 					</ul>
 				</div>
 			</section>
@@ -124,12 +96,7 @@
 						</div>
 					</div>
 					<div id='steps'class="steps">
-						<h5>Step 1</h5>
-						<p>This recipe is sooo yummy it's my favoritest recipe EVER! I remember when i first had this yummy, delicious, fantabulous recipe.</p>
-						<h5>Step 2</h5>
-						<p>This recipe is sooo yummy it's my favoritest recipe EVER! I remember when i first had this yummy, delicious, fantabulous recipe.</p>
-						<h5>Step 3</h5>
-						<p>This recipe is sooo yummy it's my favoritest recipe EVER! I remember when i first had this yummy, delicious, fantabulous recipe.</p>
+						
 					</div>
 				</div>
 			</section>
@@ -161,11 +128,14 @@
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
+<script src="assets/js/app.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
 $(document).ready(function(){
 	$('#nav').load('assets/includes/head.txt')
+	$('#footer').load('assets/includes/footer.txt')
+
 
   // Initialize Firebase
   var config = {
@@ -177,6 +147,7 @@ $(document).ready(function(){
     messagingSenderId: "915542502205"
   };
   firebase.initializeApp(config);
+  var database = firebase.database();
 
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -189,6 +160,71 @@ $(document).ready(function(){
     }
   });
 
+
+	var getUrlParameter = function getUrlParameter(sParam) {
+	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : sParameterName[1];
+			}
+		}
+	};
+
+	var recipeKey = getUrlParameter('rkey');
+	console.log(recipeKey)
+	if(recipeKey){
+		console.log('true')
+		//GET RECIPE FROM DB
+		database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
+		  // console.log(snapshot.val());
+		  var v = snapshot.val();
+
+		  $('#recipe_name').html(v.rName);
+		  $('#title').html(v.rName + ' Recipe');
+		  $('#addby').html(v.enterBy);
+		  $('#story').html(v.rStory)
+		  
+		  //display ingredients
+		  var ingredients = v.ringredients
+		  var ing = 1;
+		  ingredients.forEach(function(ingr){
+		  	// console.log(ingr);
+		  	$('#ingredients_list').append('<li>' + ingr + '</li>');
+		  	ing++
+		  })
+
+
+		  if (v.oTemp == '0'){
+		  	$('#oven').html('Not Needed');
+		  } else{
+		  	$('#oven').html(v.oTemp + '&#730;');
+		  }
+		  $('#clock').html(v.rTime + ' Min');
+		  $('#servings').html(v.rServings)
+
+		  //display all directions
+		  var steps = v.rDirections
+		  var st = 1;
+		  steps.forEach(function(theSteps){
+		  	// console.log(theSteps);
+		  	$('#steps').append('<h5>Step ' + st + '</h5><p>' + theSteps + '</p>');
+		  	st++
+		  })
+
+		}, function(errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
+
+
+	} else{
+		console.log('false')
+		//GET RECIPE FROM SOMEWHERE ELSE
+		$('.col-md-10').html('<h2>Please search for a recipe or return to your account page if you are logged on to display a recipe</h2>')
+	}
 
 });
 </script>
