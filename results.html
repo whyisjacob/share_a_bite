@@ -164,53 +164,53 @@ $(document).ready(function(){
 	var recipeKey = getUrlParameter('rkey');
 	console.log(recipeKey)
 	if(recipeKey){
+		
+		console.log('true')
+		//GET RECIPE FROM DB
+		database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
+		  // console.log(snapshot.val());
+		  var v = snapshot.val();
+		  console.log(v)
 
-			console.log('true')
-			//GET RECIPE FROM DB
-			database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
-			  // console.log(snapshot.val());
-			  var v = snapshot.val();
-			  console.log(v)
-
-			  $('#recipe_name').html(v.rName);
-			  $('.recipe_image').css({'background-image': 'url('+v.rImage+')'});
-			  $('#title').html(v.rName + ' Recipe');
-			  $('#addby').html(v.enterBy);
-			  $('#story').html(v.rStory);
-			 
-			  $('time').attr('datetime', v.date);
-			  
-			  //display ingredients
-			  var ingredients = v.ringredients
-			  var ing = 1;
-			  ingredients.forEach(function(ingr){
-			  	// console.log(ingr);
-			  	$('#ingredients_list').append('<li>' + ingr + '</li>');
-			  	ing++
-			  })
+		  $('#recipe_name').html(v.rName);
+		  $('.recipe_image').css({'background-image': 'url('+v.rImage+')'});
+		  $('#title').html(v.rName + ' Recipe');
+		  $('#addby').html(v.enterBy);
+		  $('#story').html(v.rStory);
+		 
+		  $('time').attr('datetime', v.date);
+		  
+		  //display ingredients
+		  var ingredients = v.ringredients
+		  var ing = 1;
+		  ingredients.forEach(function(ingr){
+		  	// console.log(ingr);
+		  	$('#ingredients_list').append('<li>' + ingr + '</li>');
+		  	ing++
+		  })
 
 
-			  if (v.oTemp == '0'){
-			  	$('#oven').html('Not Needed');
-			  } else{
-			  	$('#oven').html(v.oTemp + '&#730;');
-			  }
-			  $('#clock').html(v.rTime + ' Min');
-			  $('#servings').html(v.rServings)
+		  if (v.oTemp == '0'){
+		  	$('#oven').html('Not Needed');
+		  } else{
+		  	$('#oven').html(v.oTemp + '&#730;');
+		  }
+		  $('#clock').html(v.rTime + ' Min');
+		  $('#servings').html(v.rServings)
 
-			  //display all directions
-			  var steps = v.rDirections
-			  var st = 1;
-			  steps.forEach(function(theSteps){
-			  	// console.log(theSteps);
-			  	$('#steps').append('<h5>Step ' + st + '</h5><p>' + theSteps + '</p>');
-			  	st++
-			  })
+		  //display all directions
+		  var steps = v.rDirections
+		  var st = 1;
+		  steps.forEach(function(theSteps){
+		  	// console.log(theSteps);
+		  	$('#steps').append('<h5>Step ' + st + '</h5><p>' + theSteps + '</p>');
+		  	st++
+		  })
 
-			}, function(errorObject) {
-			  console.log("The read failed: " + errorObject.code);
-			});
+		}, function(errorObject) {
+		  console.log("The read failed: " + errorObject.code);
 		});
+
 
 	} else{
 		console.log('false')
