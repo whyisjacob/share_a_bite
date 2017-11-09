@@ -126,7 +126,6 @@
 	</footer>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-<script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
@@ -183,11 +182,15 @@ $(document).ready(function(){
 		database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
 		  // console.log(snapshot.val());
 		  var v = snapshot.val();
+		  console.log(v)
 
 		  $('#recipe_name').html(v.rName);
+		  $('.recipe_image').css({'background-image': 'url('+v.rImage+')'});
 		  $('#title').html(v.rName + ' Recipe');
 		  $('#addby').html(v.enterBy);
-		  $('#story').html(v.rStory)
+		  $('#story').html(v.rStory);
+		 
+		  $('time').attr('datetime', v.date);
 		  
 		  //display ingredients
 		  var ingredients = v.ringredients
@@ -229,6 +232,8 @@ $(document).ready(function(){
 
 });
 </script>
+<script src="assets/js/timeago.js"></script>
+
 <script src="assets/js/app.js"></script>
 
 </body>

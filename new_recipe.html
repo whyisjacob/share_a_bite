@@ -83,8 +83,20 @@
 				<input type="text" class="form-control directions" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name='directions1' id="directions1">
 			</span>
 			<button id='addDirection' class="btn btn-primary btn-sm pull-right">Add Step</button>
-
 			<br>
+
+			<label for="image">Image From the Web</label>
+			<input type="text" class="form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image' id="image">
+			<br>
+
+			<label for="ispub">Make the Recipe Public</label>
+			<input type="text" class="form-control" placeholder="Enter 'Y' or 'N'" aria-describedby="sizing-addon2" name='ispub' id="ispub">
+			<br>
+
+			<label for="rcat">Recipe Categories</label>
+			<input type="text" class="form-control" placeholder="Enter your recipe categories" aria-describedby="sizing-addon2" name='rcat' id="rcat">
+			<br>
+
 
 			<button id="addrecipe" class="btn btn-primary" onclick='addrecipe()'>Add Now</button>
 
@@ -115,6 +127,11 @@
 
 <script>
 // $(document).ready(function(){
+	var d = new Date();
+	var y = d.getFullYear();
+	var m = d.getMonth();
+		d = d.getDate();
+	var dateStamp = y + '-' + m + '-' + d;
 
 	var ingNum = 2,
 		dirNum = 2,
@@ -196,7 +213,10 @@
 			rDirections = [],
 			oTemp = $('#ovtemp').val(),
 			rTime = $('#cooktime').val(),
-			rServings = $('#servings').val();
+			rServings = $('#servings').val(),
+			rImage = $('#image').val(),
+			rCategories = [],
+			isPub = 'Y'; //$('#ispub').val()
 
 		$('.ingredients').each(function(i,val){
 			var v = $(val).val();
@@ -225,14 +245,25 @@
 			rDirections: rDirections,
 			oTemp: oTemp,
 			rTime: rTime,
-			rServings: rServings
+			rServings: rServings,
+			rImage: rImage,
+			rCategories: rCategories,
+			date:dateStamp
 		}
 		var newPostKey = firebase.database().ref().child('recipes').push().key;
-		var updates = {};
-		updates['public-recipes/' + newPostKey] = postData;
-		updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
-		return database.ref().update(updates);
-		// database.ref('recipes/' + uid + '/' + rName).set(newData);
+
+		if (isPub === "Y"){
+			var updates = {};
+			updates['public-recipes/' + newPostKey] = postData;
+			updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+			return database.ref().update(updates);
+		} else {
+			var updates = {};
+			//don't add to public-recipes
+			updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+			return database.ref().update(updates);
+
+		}
 
 
 	}//addrecipe

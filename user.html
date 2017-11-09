@@ -163,7 +163,7 @@ $(document).ready(function(){
             var childData = childSnapshot.val();
             console.log(childData)
 
-            $('#user_recipes').append('<span class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </span>')
+            $('#user_recipes').prepend('<span class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </span>')
 
         });
       });
