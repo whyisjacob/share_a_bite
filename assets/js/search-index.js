@@ -25,9 +25,9 @@ $( document ).ready(function() {
 		  // firebase.initializeApp(config);
 
 //edamam api data
-		var appId = "c26ba31b";
+		var apeId = "c26ba31b";
 		var apiKey = "0e164b393b7346efa7e6769658022a14";
-		var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + appId + "&app_key=" + apiKey + "&from=0&to=6&callback=myfunc";
+		var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + apeId + "&app_key=" + apiKey + "&from=0&to=6&callback=myfunc";
 		var myfunc = function (json) {
 		  alert(json);
 			}
@@ -58,7 +58,20 @@ $( document ).ready(function() {
 				console.log(myData);
 
 				});
+
+		var ftfApi = "b65855c8900029efe3c4ac2e4d11becf";
+		var ftfUrl = "http://food2fork.com/api/search?key=" + ftfApi + "&q=" + query;
+		console.log(ftfUrl);
+		$.ajax({
+	     url: ftfUrl,
+	     method: "GET",
+		 }).done(function(fRepo) {
+		 	console.log(fRepo)
+		 })
+
 		});
+
+
 });
 
 
