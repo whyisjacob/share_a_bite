@@ -91,7 +91,7 @@
 		</section>
 		<!--Add display on medium and large screen-->
 		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
-			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Grab A Bite -->
 			<ins class="adsbygoogle"
 			     style="display:block"
@@ -150,6 +150,8 @@
 		console.log(user)
 	  if (user) {
 	    // User is signed in.
+	    $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+
 	    $('h2').prepend(user.displayName + ', Please ')
 	    uEmail = user.email
 	    displayName = user.displayName;

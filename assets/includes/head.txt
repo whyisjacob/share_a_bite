@@ -21,14 +21,14 @@
 	</div>
 	<div class="col-sm-3 login">
 		<a href="login.html" id="login">Login <span class="glyphicon glyphicon-user"></span></a><br>
-		Search <span class="glyphicon glyphicon-search"></span>
+		<a href="index.html" id="search">Search <span class="glyphicon glyphicon-search"></span></a>
 	</div>
 </div>
 
 <div class="container-fluid r-container">
 	<!--Add display on small and xs screen-->
 	<aside class="col-md-2 visible-xs-block visible-sm-block hidden-md hidden-lg hidden-print">
-		<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- Grab A Bite -->
 		<ins class="adsbygoogle"
 		     style="display:block"

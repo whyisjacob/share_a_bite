@@ -86,6 +86,8 @@ $(document).ready(function(){
 	var user = result.user;
 	console.log(user)
 	if(user.I){
+		$('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+
 		$('#username').html(user.displayName)
 	}
 	// ...

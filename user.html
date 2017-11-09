@@ -49,15 +49,34 @@
 
 	<div class="row">
 		<section class="col-sm-10">
-			<h1>My Recently Added Recipes</h1>
+			<h1>My Account</h1>
+			<div class="row">
+				<div class="col-sm-6">
+					<h2>My Information</h2>
 
-			<article id="user_recipes">
-			</article>
+					<article id="">
+						<img id="myimg" src="" alt="" class="" style="width:33%;margin-right:10px;"><br>
+						Name: <span id="name"></span><br>
+						Email: <span id="email"></span><br>
+						Last Login: <span id="logintime"></span><br>
+
+						
+					</article>
+
+				</div>
+				<div class="col-sm-6">
+					<h2>My Recipes</h2>
+
+					<div id="user_recipes" >
+					</div>
+
+				</div>
+			</div>
 
 		</section>
 		<!--Add display on medium and large screen-->
 		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
-			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Grab A Bite -->
 			<ins class="adsbygoogle"
 			     style="display:block"
@@ -91,6 +110,7 @@
 	</aside>
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
+<script src="assets/js/app.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
@@ -117,12 +137,20 @@ $(document).ready(function(){
   firebase.initializeApp(config);
   var database = firebase.database();
 
+
+  //User is Signed in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
+      $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
       console.log(user);
-      $('#user').html(user.displayName)
+      $('#name').html(user.displayName)
+      $('#email').html(user.email)
+      $('#myimg').attr('src', user.photoURL);
+      $('#logintime').html(user.metadata.lastSignInTime)
+
       uid = user.uid;
+
 
       database.ref('/user-recipes/' + uid).orderByKey();
       database.ref('/user-recipes/' + uid).orderByKey().once("value")
@@ -137,7 +165,7 @@ $(document).ready(function(){
             var childData = childSnapshot.val();
             console.log(childData)
 
-            $('#user_recipes').append('<div class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </div>')
+            $('#user_recipes').append('<span class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </span>')
 
         });
       });

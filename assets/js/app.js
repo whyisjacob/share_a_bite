@@ -6,3 +6,4 @@ $(document).on('click','#menu', function(){
 $(document).on('click', 'article', function(){
 	$('#navigation').addClass('hidden');
 })
+
