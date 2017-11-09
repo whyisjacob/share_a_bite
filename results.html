@@ -164,7 +164,7 @@ $(document).ready(function(){
 	var recipeKey = getUrlParameter('rkey');
 	console.log(recipeKey)
 	if(recipeKey){
-		database.ref().on("value", function(snapshot) {
+
 			console.log('true')
 			//GET RECIPE FROM DB
 			database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
