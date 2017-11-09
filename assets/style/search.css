@@ -70,6 +70,9 @@
 		position: absolute;
 		top: 55px;
 	}
+	#main-image::after {
+	  opacity: 0.3;
+	}
 }
 
 @media screen and (max-width: 530px){
