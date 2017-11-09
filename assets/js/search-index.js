@@ -59,18 +59,24 @@ $( document ).ready(function() {
 
 				});
 
-		var ftfApi = "b65855c8900029efe3c4ac2e4d11becf";
-		var ftfUrl = "http://food2fork.com/api/search?key=" + ftfApi + "&q=" + query;
-		console.log(ftfUrl);
-		$.ajax({
-	     url: ftfUrl,
-	     method: "GET",
-		 }).done(function(fRepo) {
-		 	console.log(fRepo)
-		 })
+				var RapidAPI = new require('rapidapi-connect');
+				var rapid = new RapidAPI('recipes-1_5a03c55fe4b06b4ed0ef6294', 'a1a99bf0-6067-4053-b547-b631877ef306');
+				// rapid.call('Twilio', 'sendMessage', {'{}'});
+				// });
+				var mashApeKey = "2Ga6EoFv4wmshnixC1fzN7Nya2dUp1NmBxWjsn4ReduoSa1rhy";
+				var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
-		});
+				rapid.call('PackageName', 'FunctionName', { 
+				'ParameterKey1': 'ParameterValue1',
+				'ParameterKey2': 'ParameterValue2',
+			}).on('success', function (payload) {
+				 /*YOUR CODE GOES HERE*/ 
+			}).on('error', function (payload) {
+				 /*YOUR CODE GOES HERE*/ 
+			});
 
+
+	});
 
 });
 

@@ -54,6 +54,36 @@
 			display: inline;
 			float: left;	    	
 			width: 33.33%;
-		}
-		  
+		}		  
 }
+
+@media screen and (max-width: 600px) {
+	#main-image{
+		width: 600px;
+	}
+	#search-bar>p {
+		font-size: 2vw;
+		margin: 0 10% 0 2%;
+	}
+	#search {
+		width: 100%;
+		position: absolute;
+		top: 55px;
+	}
+}
+
+@media screen and (max-width: 530px){
+	#search-bar>p {
+		font-size: 3vw;
+		margin: 0 20% 0 2%;
+	}
+
+}
+
+@media screen and (max-width: 475px){
+	#search-bar>p {
+		font-size: 3vw;
+		margin: 0 40% 0 2%;
+	}
+}
+
