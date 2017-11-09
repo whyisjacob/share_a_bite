@@ -23,7 +23,7 @@ $( document ).ready(function() {
 		  // };
 
 		  // firebase.initializeApp(config);
-//https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free
+
 //edamam api data
 var appId = "c26ba31b";
 var apiKey = "0e164b393b7346efa7e6769658022a14";
@@ -37,11 +37,17 @@ $.ajax({
      dataType: 'jsonp', 
      jsonpCallback: 'myfunc', 
  	 jsonp: 'callback'
- 	 // success: myfunc(json){
- 	 // 	alert(json);
- 	 // }
+ 	 
     }).done(function(response) {
     	console.log(response);
+    	console.log(response.hits[0]);
+    	console.log(response.hits[0].recipe.calories);
+
+    	//three section elements
+    	// one for recipe title and added by
+    	//one for "perfect for breakfast lunch dinner"
+    	//one for for brief description
+
 
     });
 
