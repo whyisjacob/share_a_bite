@@ -148,19 +148,6 @@ $(document).ready(function(){
   var database = firebase.database();
 
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      console.log(user);
-      $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
-
-    } else {
-      // No user is signed in.
-      console.log('User not logged in')
-    }
-  });
-
-
 	var getUrlParameter = function getUrlParameter(sParam) {
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 		sURLVariables = sPageURL.split('&'),
@@ -229,6 +216,21 @@ $(document).ready(function(){
 		//GET RECIPE FROM SOMEWHERE ELSE
 		$('.col-md-10').html('<h2>Please search for a recipe or return to your account page if you are logged on to display a recipe</h2>')
 	}
+
+
+	// firebase.auth().onAuthStateChanged(function(user) {
+	//   if (user) {
+	//     // User is signed in.
+	//     console.log(user);
+	//     $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+
+	//   } else {
+	//     // No user is signed in.
+	//     console.log('User not logged in')
+	//   }
+	// });
+
+
 
 });
 </script>
