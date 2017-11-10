@@ -30,7 +30,8 @@ $( document ).ready(function() {
 		var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + apeId + "&app_key=" + apiKey + "&from=0&to=6&callback=myfunc";
 		var myfunc = function (json) {
 		  alert(json);
-			}
+			};
+
 		$.ajax({
 	     url: queryUrl,
 	     method: "GET",
@@ -40,8 +41,10 @@ $( document ).ready(function() {
 	 	 
 		    }).done(function(response) {
 		    	console.log(response);
-		    	console.log(response.hits[0]);
+		    	console.log(response.hits[0].url);
 		    	console.log(response.hits[0].recipe.calories);
+		    	console.log(response.hits[0].recipe.url);
+		    	var edamamUrl = response.hits[0].recipe.url;
 
 		    	localStorage.setItem('recipe', AddToLocalStorage(response));
 		    	// this function converts JSON into string to be entered into localStorage
@@ -56,31 +59,40 @@ $( document ).ready(function() {
 
 				var myData = GetFromLocalStorage("recipe");
 				console.log(myData);
-
-				});
-
-				var RapidAPI = new require('rapidapi-connect');
-				var rapid = new RapidAPI('recipes-1_5a03c55fe4b06b4ed0ef6294', 'a1a99bf0-6067-4053-b547-b631877ef306');
-				// rapid.call('Twilio', 'sendMessage', {'{}'});
-				// });
-				var mashApeKey = "2Ga6EoFv4wmshnixC1fzN7Nya2dUp1NmBxWjsn4ReduoSa1rhy";
+	
+				var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
 				var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
-				rapid.call('PackageName', 'FunctionName', { 
-				'ParameterKey1': 'ParameterValue1',
-				'ParameterKey2': 'ParameterValue2',
-			}).on('success', function (payload) {
-				 /*YOUR CODE GOES HERE*/ 
-			}).on('error', function (payload) {
-				 /*YOUR CODE GOES HERE*/ 
-			});
-
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				 	 console.log(result.instructions);
+					})
+				})
+				
+				});
 
 	});
 
-});
-
-
+			// var firebase = require('firebase/app');
+				// 	require('firebase/auth');
+				// 	require('firebase/database');
+				// 	require('firebase/storage');
+				// var RapidAPI = new require('rapidapi-connect');
+				// var rapid = new RapidAPI('recipes-1_5a03c55fe4b06b4ed0ef6294', 'a1a99bf0-6067-4053-b547-b631877ef306');
+// rapid.call('PackageName', 'FunctionName', { 
+// 				'ParameterKey1': 'ParameterValue1',
+// 				'ParameterKey2': 'ParameterValue2',
+// 			}).on('success', function (payload) {
+// 				 /*YOUR CODE GOES HERE*/ 
+// 			}).on('error', function (payload) {
+// 				 /*YOUR CODE GOES HERE*/ 
+// 			});
     
 //     //making a button with the recipe searched
    
