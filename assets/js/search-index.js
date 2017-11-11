@@ -11,18 +11,7 @@ $( document ).ready(function() {
 
 	// this might just be hardcoded, trying to avoid CORS issues
 	// $("#main-image").load(link);
-	// });
-	// Initialize Firebase
-		  // var config = {
-		  //   apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-		  //   authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-		  //   databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-		  //   projectId: "grab-a-bite-df6c2",
-		  //   storageBucket: "grab-a-bite-df6c2.appspot.com",
-		  //   messagingSenderId: "915542502205"
-		  // };
-
-		  // firebase.initializeApp(config);
+	
 
 //edamam api data
 		var apeId = "c26ba31b";
@@ -41,174 +30,162 @@ $( document ).ready(function() {
 	 	 
 		    }).done(function(response) {
 		    	console.log(response);
-		    	console.log(response.hits[0].url);
 		    	console.log(response.hits[0].recipe.calories);
 		    	console.log(response.hits[0].recipe.url);
-		    	var edamamUrl = response.hits[0].recipe.url;
+		    	console.log(response.hits[0].recipe.label);
 
-		    	localStorage.setItem('recipe', AddToLocalStorage(response));
-		    	// this function converts JSON into string to be entered into localStorage
-				function AddToLocalStorage(data) {
-				  if (typeof data != "string") {data = JSON.stringify(data);}
-					  return data;
-				}
-				// this function gets string from localStorage and converts it into JSON
-				function GetFromLocalStorage(key) {
-				  return JSON.parse(localStorage.getItem(key));
-				}
+		    	var edamamZeroUrl = response.hits[0].recipe.url;
+		    	var edamamOneUrl = response.hits[1].recipe.url;
+		    	var edamamTwoUrl = response.hits[2].recipe.url;
+		    	var edamamThreeUrl = response.hits[3].recipe.url;
+		    	var edamamFourUrl = response.hits[4].recipe.url;
+		    	var edamamFiveUrl = response.hits[5].recipe.url;
 
-				var myData = GetFromLocalStorage("recipe");
-				console.log(myData);
+
 	
+	//rapidApi & MashApe API data
 				var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
 				var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
 				$.ajax({
-					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamUrl,
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamZeroUrl,
 					method: "GET",
 					headers: {
 				        "X-Mashape-Key":mashApeKey,
 				        "X-Mashape-Host":mashApeHost,
 				    }
 				    }).done(function (result) {
-				 	 console.log(result.instructions);
-					})
+				   	 console.log(result);
+				   	var recipeZero = {
+			    		title: response.hits[0].recipe.label,
+			    		author: response.hits[0].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[0].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeZero);
+					});
+					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
+					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamOneUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeOne = {
+			    		title: response.hits[1].recipe.label,
+			    		author: response.hits[1].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[1].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeOne);
+					});
+					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
+					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamTwoUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeTwo = {
+			    		title: response.hits[2].recipe.label,
+			    		author: response.hits[2].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[2].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeTwo);
+					});
+					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
+					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamThreeUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeThree = {
+			    		title: response.hits[3].recipe.label,
+			    		author: response.hits[3].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[3].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeThree);
+					});
+					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
+					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFourUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeFour = {
+			    		title: response.hits[4].recipe.label,
+			    		author: response.hits[4].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[4].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeFour);
+					});
+					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
+					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFiveUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeFive = {
+			    		title: response.hits[5].recipe.label,
+			    		author: response.hits[5].recipe.source,
+			    		description: result.instructions,
+			    		image: response.hits[5].recipe.image,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeFive);
+					});
 				})
+
+
+		    //still in glyphicon on.click
 				
 				});
 
 	});
 
-			// var firebase = require('firebase/app');
-				// 	require('firebase/auth');
-				// 	require('firebase/database');
-				// 	require('firebase/storage');
-				// var RapidAPI = new require('rapidapi-connect');
-				// var rapid = new RapidAPI('recipes-1_5a03c55fe4b06b4ed0ef6294', 'a1a99bf0-6067-4053-b547-b631877ef306');
-// rapid.call('PackageName', 'FunctionName', { 
-// 				'ParameterKey1': 'ParameterValue1',
-// 				'ParameterKey2': 'ParameterValue2',
-// 			}).on('success', function (payload) {
-// 				 /*YOUR CODE GOES HERE*/ 
-// 			}).on('error', function (payload) {
-// 				 /*YOUR CODE GOES HERE*/ 
-// 			});
-    
-//     //making a button with the recipe searched
-   
 		
 
 
-//    console.log("button created");
-//    var master = [];
-
-// //---------- functions
-
-
-// function createButtons(){
-
-//         //this should prevent recreating items in the list...
-//         // Looping through the array of buttons and doing classes, etc. all at once.
-//         for (var i = 0; i < master.length; i++) {
-
-//           // Then dynamicaly generating buttons for each thing in array
-//           var a = $("<button>");
-//           // Adding classes to our button
-//           a.addClass("btn btn-info text-center");
-//           // Adding a data-attribute
-//           a.attr("data-name", master[i]);
-//           // Providing the initial button text
-//           a.text(master[i]);
-//           // Adding the button to the buttons-view div
-//           $("#for-test").append(a);
-//         }
-// };
-
-//    	function alterMasterList(){
-//   //if input is blank
-//   if ($("#search-input").val() === ""){
-//     console.log("type something fun!");
-//   } //otherwise do what I actually want this function to do
-//     else {
-//   master.push($("#search-input").val());
-//   }
-// };
-
-// //---------- MAIN PROCESSES
-// //main addition of buttons from the input
-// $("#for-test").click(function(){
-
-//   //this keeps the divs from disappearing, and the console from freaking out.
-//   event.preventDefault();
-
-//   alterMasterList();
-//   // $(".for-hiding").removeAttr("hidden");
-//   createButtons();
-
-//   $("#zoo-input").val("");
-
-// });
-//    	//.on click for displaying gifs
-// $("#search-input").on("click","button.thing-button", function(){
-    
-//     //trying to clear the div of previous gif images, too many will make super slow page
-
-//     $("#for-test").empty();
-//     // show more instructions for users.
-//     $("#hide-em").removeAttr("hidden");
-
-//     //NICE
-
-//     //this is important to know, you need to make sure that when your gif/new.div image display function is called, it can reference the correct value with "this" and use it in its response.data, etc.
-//       console.log($(this).attr("data-name"));
-
-//       console.log("inside handler");
-
-//         var newButton = $(this).attr("data-name");
-//         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + newButton + "&api_key=9BlNYmwgDWvberRjgJV9QfSnyt8O6fja&limit=10";
-
-//         console.log($(this).attr("data-name"));
-
-//         // calling AJAX and displaying the 10 gifs per button click. the .on() means it will access newly created elements, while a .click(function()) does not bind itself to dynamically created elements.
-          
-//           var newGif = response.data;
-
-//           for (var i = 0; i < newGif.length; i++) {
-
-//             var newThingDiv = $("<div class='newGif'>");
-
-//              // Storing the rating data
-//             var rating = newGif[i].rating;
-
-//             // Creating an element to have the rating displayed
-//             var pOne = $("<p>").text("Rating: " + rating);
-
-//             // Displaying the rating
-//             newThingDiv.append(pOne);
-
-//             // Retrieving the URL for the image
-//             var stillURL = response.recipe.image;
-
-//             // Creating an element to hold the image
-//             var image = $("<img>").attr("src", stillURL).attr("data-still", stillURL);
-
-//             image.addClass("clickImg");
-//             $( "div.demo-container" ).text();
-//             // Appending the image
-//             newThingDiv.append(image);
-
-//             // Putting the gifs above the previous gifs
-//             $("#gif-population").prepend(newThingDiv);
-        
-//         }
-//     });
-
-// });
-
-// });
-
-
-
-
-// });
 
