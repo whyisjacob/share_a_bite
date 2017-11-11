@@ -1,5 +1,18 @@
 $( document ).ready(function() {
     console.log( "ready!" );
+    var config = {
+		  apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+		  authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+		  databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+		  projectId: "grab-a-bite-df6c2",
+		  storageBucket: "grab-a-bite-df6c2.appspot.com",
+		  messagingSenderId: "915542502205"
+		};
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+		var defaultAuth = firebase.auth();
+		console.log(defaultAuth)
 	$("#sizing-addon1").on("click", function(){
 
 		console.log("glyphicon clicked");
@@ -7,27 +20,61 @@ $( document ).ready(function() {
 
 		console.log(query);	
 
-		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html"
-
+		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html";
+		var devLink = "../recipe-list.html";
 	// this might just be hardcoded, trying to avoid CORS issues
-	// $("#main-image").load(link);
-	// });
-	// Initialize Firebase
-		  // var config = {
-		  //   apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-		  //   authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-		  //   databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-		  //   projectId: "grab-a-bite-df6c2",
-		  //   storageBucket: "grab-a-bite-df6c2.appspot.com",
-		  //   messagingSenderId: "915542502205"
-		  // };
+	$("#main-image").load(link).addClass(".for-hiding");
 
-		  // firebase.initializeApp(config);
+	var uEmail,
+		displayName,
+		emailVerified,
+		photoURL,
+		isAnonymous,
+		uid = 'Public',
+		providerData;
+
+	var d = new Date();
+	var y = d.getFullYear();
+	var m = d.getMonth();
+	console.log(m);
+	switch(m){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			m = 0 + d.getMonth();
+		break;
+	}
+	m++//since it pulls the month previous to current month
+
+	d = d.getDate();
+	switch(d){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			d = '0' + d.getDate();
+		break;
+	}
+
+	var dateStamp = y + '-' + m + '-' + d;
+
+		
 
 //edamam api data
 		var apeId = "c26ba31b";
 		var apiKey = "0e164b393b7346efa7e6769658022a14";
-		var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + apeId + "&app_key=" + apiKey + "&from=0&to=6&callback=myfunc";
+		var queryUrl = "https://api.edamam.com/search?q=" + query + "&app_id=" + apeId + "&app_key=" + apiKey + "&from=0&to=3&callback=myfunc";
 		var myfunc = function (json) {
 		  alert(json);
 			};
@@ -41,174 +88,329 @@ $( document ).ready(function() {
 	 	 
 		    }).done(function(response) {
 		    	console.log(response);
-		    	console.log(response.hits[0].url);
 		    	console.log(response.hits[0].recipe.calories);
 		    	console.log(response.hits[0].recipe.url);
-		    	var edamamUrl = response.hits[0].recipe.url;
+		    	console.log(response.hits[0].recipe.label);
 
-		    	localStorage.setItem('recipe', AddToLocalStorage(response));
-		    	// this function converts JSON into string to be entered into localStorage
-				function AddToLocalStorage(data) {
-				  if (typeof data != "string") {data = JSON.stringify(data);}
-					  return data;
-				}
-				// this function gets string from localStorage and converts it into JSON
-				function GetFromLocalStorage(key) {
-				  return JSON.parse(localStorage.getItem(key));
-				}
+		    	var edamamZeroUrl = response.hits[0].recipe.url;
+		    	var edamamOneUrl = response.hits[1].recipe.url;
+		    	var edamamTwoUrl = response.hits[2].recipe.url;
 
-				var myData = GetFromLocalStorage("recipe");
-				console.log(myData);
+
+
 	
+	//rapidApi & MashApe API data
 				var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
 				var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
+				//ajax one
+
 				$.ajax({
-					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamUrl,
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamZeroUrl,
 					method: "GET",
 					headers: {
 				        "X-Mashape-Key":mashApeKey,
 				        "X-Mashape-Host":mashApeHost,
 				    }
 				    }).done(function (result) {
-				 	 console.log(result.instructions);
-					})
-				})
+				   	 console.log(result);
+				   	var recipeZero = {
+			    		title: response.hits[0].recipe.label,
+			    		author: response.hits[0].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
+			    		description: result.instructions,
+			    		image: response.hits[0].recipe.image,
+			    		servings: result.servings,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeZero);
+		    			$("#recipeZero").text(recipeZero.title);
+		    			$("#authorZero").text("Added By: " + recipeZero.author);
+		    			var rImage = $("<img>").attr("src", recipeZero.image).attr("alt", recipeZero.title).attr("target", "_blank").attr("data-ID", recipeZero.unique).css("cursor", "pointer");
+		    			rImage.addClass("rec-image");
+		    			$(".recipeImageZero").append(rImage);
+		    			$(".descriptionZero").append(recipeZero.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeZero.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeZero.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeZero.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+						
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeZero.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeZero.author,
+							user:uid,
+							rName: recipeZero.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+						});
+					});
+
+
+				//ajax two
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamOneUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeOne = {
+			    		title: response.hits[1].recipe.label,
+			    		author: response.hits[1].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
+			    		description: result.instructions,
+			    		image: response.hits[1].recipe.image,
+			    		servings: result.servings,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeOne);
+		    			$("#recipeOne").text(recipeOne.title);
+		    			$("#authorOne").text("Added By: " + recipeOne.author);
+		    			var rImage = $("<img>").attr("src", recipeOne.image).attr("alt", recipeOne.title).attr("target", "_blank").attr("data-ID", recipeOne.unique).css("cursor", "pointer");
+		    			rImage.addClass("rec-image");
+		    			$(".recipeImageOne").append(rImage);
+		    			$(".descriptionOne").append(recipeOne.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeOne.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeOne.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeOne.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeOne.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeOne.author,
+							user:uid,
+							rName: recipeOne.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+
+						});
+					});
+					
+
+				//ajax three
+
+				$.ajax({
+					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamTwoUrl,
+					method: "GET",
+					headers: {
+				        "X-Mashape-Key":mashApeKey,
+				        "X-Mashape-Host":mashApeHost,
+				    }
+				    }).done(function (result) {
+				   	 console.log(result);
+				   	var recipeTwo = {
+			    		title: response.hits[2].recipe.label,
+			    		author: response.hits[2].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
+			    		description: result.instructions,
+			    		image: response.hits[2].recipe.image,
+			    		servings: result.servings,
+			    		unique: result.id
+		    		}
+
+		    		console.log(recipeTwo);
+		    			$("#recipeTwo").text(recipeTwo.title);
+		    			$("#authorTwo").text("Added By: " + recipeTwo.author);
+		    			var rImage = $("<img>").attr("src", recipeTwo.image).attr("alt", recipeTwo.title).attr("target", "_blank").attr("data-ID", recipeTwo.unique).css("cursor", "pointer");
+		    			rImage.addClass("rec-image");
+		    			$(".recipeImageTwo").append(rImage);
+		    			$(".descriptionTwo").append(recipeTwo.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeTwo.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeTwo.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeTwo.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeTwo.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeTwo.author,
+							user:uid,
+							rName: recipeTwo.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+
+						});
+					});
+
+
+
+function addrecipe(){
+	// uncomment if you get an error about firebase not being configured
+	// firebase.initializeApp(config);
+
+
+	//set up appropriate variables
+	var rName = $('#recipe_name').val(),
+		ringredients = [],
+		rDirections = [],
+		rServings = $('#servings').val(),
+		rImage = $('#image').val(),
+		isPub = 'Y'; //$('#ispub').val()
+
+	//put all of the ingredients into an array
+	$('.ingredients').each(function(i,val){
+		var v = $(val).val();
+		console.log(v)
+		ringredients.push(v);
+	})
+
+	//put all of the directions/steps (if separated) in to an array
+	$('.directions').each(function(i,val){
+		var v = $(val).val();
+		console.log(v)
+		rDirections.push(v);
+	})
+
+
+	//build the object with all recipe data
+	var postData={
+		enterBy:displayName,
+		user:uid,
+		rName: rName,
+		rStory: rStory,
+		ringredients: ringredients,
+		rDirections: rDirections,
+		oTemp: oTemp,
+		rTime: rTime,
+		rServings: rServings,
+		rImage: rImage,
+		rCategories: rCategories,
+		date:dateStamp
+	}
+	var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+	var updates = {};
+	updates['public-recipes/' + newPostKey] = postData;
+	updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+	return database.ref().update(updates);
+
+	}
+
+
+		    //still in glyphicon on.click
 				
-				});
+		});
+})
+})
 
-	});
 
-			// var firebase = require('firebase/app');
-				// 	require('firebase/auth');
-				// 	require('firebase/database');
-				// 	require('firebase/storage');
-				// var RapidAPI = new require('rapidapi-connect');
-				// var rapid = new RapidAPI('recipes-1_5a03c55fe4b06b4ed0ef6294', 'a1a99bf0-6067-4053-b547-b631877ef306');
-// rapid.call('PackageName', 'FunctionName', { 
-// 				'ParameterKey1': 'ParameterValue1',
-// 				'ParameterKey2': 'ParameterValue2',
-// 			}).on('success', function (payload) {
-// 				 /*YOUR CODE GOES HERE*/ 
-// 			}).on('error', function (payload) {
-// 				 /*YOUR CODE GOES HERE*/ 
-// 			});
-    
-//     //making a button with the recipe searched
-   
+
+
+
 		
 
 
-//    console.log("button created");
-//    var master = [];
-
-// //---------- functions
-
-
-// function createButtons(){
-
-//         //this should prevent recreating items in the list...
-//         // Looping through the array of buttons and doing classes, etc. all at once.
-//         for (var i = 0; i < master.length; i++) {
-
-//           // Then dynamicaly generating buttons for each thing in array
-//           var a = $("<button>");
-//           // Adding classes to our button
-//           a.addClass("btn btn-info text-center");
-//           // Adding a data-attribute
-//           a.attr("data-name", master[i]);
-//           // Providing the initial button text
-//           a.text(master[i]);
-//           // Adding the button to the buttons-view div
-//           $("#for-test").append(a);
-//         }
-// };
-
-//    	function alterMasterList(){
-//   //if input is blank
-//   if ($("#search-input").val() === ""){
-//     console.log("type something fun!");
-//   } //otherwise do what I actually want this function to do
-//     else {
-//   master.push($("#search-input").val());
-//   }
-// };
-
-// //---------- MAIN PROCESSES
-// //main addition of buttons from the input
-// $("#for-test").click(function(){
-
-//   //this keeps the divs from disappearing, and the console from freaking out.
-//   event.preventDefault();
-
-//   alterMasterList();
-//   // $(".for-hiding").removeAttr("hidden");
-//   createButtons();
-
-//   $("#zoo-input").val("");
-
-// });
-//    	//.on click for displaying gifs
-// $("#search-input").on("click","button.thing-button", function(){
-    
-//     //trying to clear the div of previous gif images, too many will make super slow page
-
-//     $("#for-test").empty();
-//     // show more instructions for users.
-//     $("#hide-em").removeAttr("hidden");
-
-//     //NICE
-
-//     //this is important to know, you need to make sure that when your gif/new.div image display function is called, it can reference the correct value with "this" and use it in its response.data, etc.
-//       console.log($(this).attr("data-name"));
-
-//       console.log("inside handler");
-
-//         var newButton = $(this).attr("data-name");
-//         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + newButton + "&api_key=9BlNYmwgDWvberRjgJV9QfSnyt8O6fja&limit=10";
-
-//         console.log($(this).attr("data-name"));
-
-//         // calling AJAX and displaying the 10 gifs per button click. the .on() means it will access newly created elements, while a .click(function()) does not bind itself to dynamically created elements.
-          
-//           var newGif = response.data;
-
-//           for (var i = 0; i < newGif.length; i++) {
-
-//             var newThingDiv = $("<div class='newGif'>");
-
-//              // Storing the rating data
-//             var rating = newGif[i].rating;
-
-//             // Creating an element to have the rating displayed
-//             var pOne = $("<p>").text("Rating: " + rating);
-
-//             // Displaying the rating
-//             newThingDiv.append(pOne);
-
-//             // Retrieving the URL for the image
-//             var stillURL = response.recipe.image;
-
-//             // Creating an element to hold the image
-//             var image = $("<img>").attr("src", stillURL).attr("data-still", stillURL);
-
-//             image.addClass("clickImg");
-//             $( "div.demo-container" ).text();
-//             // Appending the image
-//             newThingDiv.append(image);
-
-//             // Putting the gifs above the previous gifs
-//             $("#gif-population").prepend(newThingDiv);
-        
-//         }
-//     });
-
-// });
-
-// });
-
-
-
-
-// });
 
