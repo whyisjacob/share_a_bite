@@ -27,7 +27,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     console.log('!!!==== app.js knows user is logged in !!!====');
-    $('#login').attr('href','user.html').html('Returning To My Account <span class="glyphicon glyphicon-user"></span>')
+    $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
     $('#search').html('Sign Out').attr('href','logout.html')
 
 

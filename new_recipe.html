@@ -260,11 +260,11 @@
 			rDirections.push(v);
 		})
 
-		$('.col-sm-10').html('<h2>Your Recipe has been added</h2>')
+		$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
 		window.location = '#'
 		setTimeout(function(){
 			reloadPage()
-		}, 4000);
+		}, 3000);
 
 
 		var postData={
@@ -300,7 +300,7 @@
 	}//addrecipe
 
 	function reloadPage(){
-		location.reload()
+		window.location = 'user.html'
 	}
 // });
 
