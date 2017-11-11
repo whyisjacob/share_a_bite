@@ -183,6 +183,7 @@ $( document ).ready(function() {
 						var newKey = ref.push().key;
 						console.log(newKey);
 						console.log(newPostKey);
+						console.log(newPostKey);
 						localStorage.setItem("postKey", newPostKey);
 					}
 
