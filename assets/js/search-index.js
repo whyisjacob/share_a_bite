@@ -179,16 +179,19 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
-						localStorage.setItem("postKey", newPostKey);
+						return newPostKey;
+						var newKey = ref.push().key;
+						console.log(newKey);
 						console.log(newPostKey);
-						}
+						localStorage.setItem("postKey", newPostKey);
+					}
 
 						
 
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							var gotPostKey = localStorage.getItem(postKey);
+							var gotPostKey = localStorage.getItem("postKey");
 							console.log(gotPostKey);
 						// results.html?rkey=[whatever the rKey is]
 							var sendieLink = fLink + gotPostKey;
@@ -279,8 +282,13 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
-						localStorage.setItem("postKey", newPostKey);
+						return newPostKey;
+						var newKey = ref.push().key;
+						console.log(newKey);
+
 						console.log(newPostKey);
+
+						localStorage.setItem("postKey1", newKey);
 
 
 						}
@@ -289,7 +297,7 @@ $( document ).ready(function() {
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							var gotPostKey = localStorage.getItem(postKey);
+							var gotPostKey = localStorage.getItem("postKey1");
 							console.log(gotPostKey);
 						// results.html?rkey=[whatever the rKey is]
 							var sendieLink = fLink + gotPostKey;
@@ -378,17 +386,21 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
-						localStorage.setItem("postKey", newPostKey);
+						return newPostKey;
+						var newKey = ref.push().key;
+						console.log(newKey);
 						console.log(newPostKey);
+
+						localStorage.setItem("postKey2", newKey);
 						}
 						
-						var gotPostKey = localStorage.getItem(postKey);
+						var gotPostKey = localStorage.getItem("postKey2");
 						var sendieLink = fLink + gotPostKey;
 
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							var gotPostKey = localStorage.getItem(postKey);
+							var gotPostKey = localStorage.getItem("postKey2");
 							console.log(gotPostKey);
 						// results.html?rkey=[whatever the rKey is]
 							var sendieLink = fLink + gotPostKey;

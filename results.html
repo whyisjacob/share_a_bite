@@ -162,8 +162,8 @@ $(document).ready(function(){
 			}
 		}
 	};
-
-	var recipeKey = getUrlParameter('rkey');
+	// old var recipeKey = getUrlParameter('rkey');
+	var recipeKey = localStorage.getItem("postKey");
 	console.log(recipeKey)
 	if(recipeKey){
 

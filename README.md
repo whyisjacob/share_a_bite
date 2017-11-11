@@ -26,6 +26,14 @@ TODO
 
 //develop search results
 
+test links
+https://whyisjacob.github.io/share_a_bite/results.html?rkey=-Kyct3Wdt_A0xqoltEeA
+
+https://whyisjacob.github.io/share_a_bite/results.html?rkey=-KyfY1y5jGLK_cVr6lab
+
+https://whyisjacob.github.io/share_a_bite/results.html?rkey=-KyfV7fD8PtF0majT514
+
+
 
 
 
