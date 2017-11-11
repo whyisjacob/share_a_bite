@@ -1,5 +1,18 @@
 $( document ).ready(function() {
     console.log( "ready!" );
+    var config = {
+		  apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+		  authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+		  databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+		  projectId: "grab-a-bite-df6c2",
+		  storageBucket: "grab-a-bite-df6c2.appspot.com",
+		  messagingSenderId: "915542502205"
+		};
+		firebase.initializeApp(config);
+
+		var database = firebase.database();
+		var defaultAuth = firebase.auth();
+		console.log(defaultAuth)
 	$("#sizing-addon1").on("click", function(){
 
 		console.log("glyphicon clicked");
@@ -7,11 +20,20 @@ $( document ).ready(function() {
 
 		console.log(query);	
 
-		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html"
+		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html";
 		var devLink = "../recipe-list.html";
 	// this might just be hardcoded, trying to avoid CORS issues
-	$("#main-image").load(devLink).addClass(".for-hiding");
-	
+	$("#main-image").load(link).addClass(".for-hiding");
+
+	var uEmail,
+		displayName,
+		emailVerified,
+		photoURL,
+		isAnonymous,
+		uid = 'Public',
+		providerData;
+
+		
 
 //edamam api data
 		var apeId = "c26ba31b";
@@ -61,6 +83,7 @@ $( document ).ready(function() {
 			    		author: response.hits[0].recipe.source,
 			    		description: result.instructions,
 			    		image: response.hits[0].recipe.image,
+			    		servings: result.servings,
 			    		unique: result.id
 		    		}
 
@@ -90,6 +113,7 @@ $( document ).ready(function() {
 			    		author: response.hits[1].recipe.source,
 			    		description: result.instructions,
 			    		image: response.hits[1].recipe.image,
+			    		servings: result.servings,
 			    		unique: result.id
 		    		}
 
@@ -119,6 +143,7 @@ $( document ).ready(function() {
 			    		author: response.hits[2].recipe.source,
 			    		description: result.instructions,
 			    		image: response.hits[2].recipe.image,
+			    		servings: result.servings,
 			    		unique: result.id
 		    		}
 
@@ -130,83 +155,71 @@ $( document ).ready(function() {
 		    			$(".recipeImageTwo").append(rImage);
 		    			$(".descriptionTwo").append(recipeTwo.description);
 					});
-					
 
-				// //ajax four
 
-				// $.ajax({
-				// 	url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamThreeUrl,
-				// 	method: "GET",
-				// 	headers: {
-				//         "X-Mashape-Key":mashApeKey,
-				//         "X-Mashape-Host":mashApeHost,
-				//     }
-				//     }).done(function (result) {
-				//    	 console.log(result);
-				//    	var recipeThree = {
-			 //    		title: response.hits[3].recipe.label,
-			 //    		author: response.hits[3].recipe.source,
-			 //    		description: result.instructions,
-			 //    		image: response.hits[3].recipe.image,
-			 //    		unique: result.id
-		  //   		}
 
-		  //   		console.log(recipeThree);
-				// 	});
-					
+function addrecipe(){
+	// uncomment if you get an error about firebase not being configured
+	// firebase.initializeApp(config);
 
-				// //ajax five
 
-				// $.ajax({
-				// 	url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFourUrl,
-				// 	method: "GET",
-				// 	headers: {
-				//         "X-Mashape-Key":mashApeKey,
-				//         "X-Mashape-Host":mashApeHost,
-				//     }
-				//     }).done(function (result) {
-				//    	 console.log(result);
-				//    	var recipeFour = {
-			 //    		title: response.hits[4].recipe.label,
-			 //    		author: response.hits[4].recipe.source,
-			 //    		description: result.instructions,
-			 //    		image: response.hits[4].recipe.image,
-			 //    		unique: result.id
-		  //   		}
+	//set up appropriate variables
+	var rName = $('#recipe_name').val(),
+		ringredients = [],
+		rDirections = [],
+		rServings = $('#servings').val(),
+		rImage = $('#image').val(),
+		isPub = 'Y'; //$('#ispub').val()
 
-		  //   		console.log(recipeFour);
-				// 	});
-					
+	//put all of the ingredients into an array
+	$('.ingredients').each(function(i,val){
+		var v = $(val).val();
+		console.log(v)
+		ringredients.push(v);
+	})
 
-				// //ajax six
+	//put all of the directions/steps (if separated) in to an array
+	$('.directions').each(function(i,val){
+		var v = $(val).val();
+		console.log(v)
+		rDirections.push(v);
+	})
 
-				// $.ajax({
-				// 	url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFiveUrl,
-				// 	method: "GET",
-				// 	headers: {
-				//         "X-Mashape-Key":mashApeKey,
-				//         "X-Mashape-Host":mashApeHost,
-				//     }
-				//     }).done(function (result) {
-				//    	 console.log(result);
-				//    	var recipeFive = {
-			 //    		title: response.hits[5].recipe.label,
-			 //    		author: response.hits[5].recipe.source,
-			 //    		description: result.instructions,
-			 //    		image: response.hits[5].recipe.image,
-			 //    		unique: result.id
-		  //   		}
 
-		  //   		console.log(recipeFive);
-				// 	});
-				})
+	//build the object with all recipe data
+	var postData={
+		enterBy:displayName,
+		user:uid,
+		rName: rName,
+		rStory: rStory,
+		ringredients: ringredients,
+		rDirections: rDirections,
+		oTemp: oTemp,
+		rTime: rTime,
+		rServings: rServings,
+		rImage: rImage,
+		rCategories: rCategories,
+		date:dateStamp
+	}
+	var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+	var updates = {};
+	updates['public-recipes/' + newPostKey] = postData;
+	updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+	return database.ref().update(updates);
+
+	}
 
 
 		    //still in glyphicon on.click
 				
-				});
+		});
+})
+})
 
-	});
+
+
+
 
 		
 
