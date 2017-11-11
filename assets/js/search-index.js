@@ -33,6 +33,42 @@ $( document ).ready(function() {
 		uid = 'Public',
 		providerData;
 
+	var d = new Date();
+	var y = d.getFullYear();
+	var m = d.getMonth();
+	console.log(m);
+	switch(m){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			m = 0 + d.getMonth();
+		break;
+	}
+	m++//since it pulls the month previous to current month
+
+	d = d.getDate();
+	switch(d){
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			d = '0' + d.getDate();
+		break;
+	}
+
+	var dateStamp = y + '-' + m + '-' + d;
+
 		
 
 //edamam api data
@@ -81,6 +117,7 @@ $( document ).ready(function() {
 				   	var recipeZero = {
 			    		title: response.hits[0].recipe.label,
 			    		author: response.hits[0].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
 			    		description: result.instructions,
 			    		image: response.hits[0].recipe.image,
 			    		servings: result.servings,
@@ -94,6 +131,56 @@ $( document ).ready(function() {
 		    			rImage.addClass("rec-image");
 		    			$(".recipeImageZero").append(rImage);
 		    			$(".descriptionZero").append(recipeZero.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeZero.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeZero.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeZero.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+						
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeZero.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeZero.author,
+							user:uid,
+							rName: recipeZero.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+						});
 					});
 
 
@@ -111,6 +198,7 @@ $( document ).ready(function() {
 				   	var recipeOne = {
 			    		title: response.hits[1].recipe.label,
 			    		author: response.hits[1].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
 			    		description: result.instructions,
 			    		image: response.hits[1].recipe.image,
 			    		servings: result.servings,
@@ -124,6 +212,56 @@ $( document ).ready(function() {
 		    			rImage.addClass("rec-image");
 		    			$(".recipeImageOne").append(rImage);
 		    			$(".descriptionOne").append(recipeOne.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeOne.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeOne.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeOne.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeOne.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeOne.author,
+							user:uid,
+							rName: recipeOne.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+
+						});
 					});
 					
 
@@ -141,6 +279,7 @@ $( document ).ready(function() {
 				   	var recipeTwo = {
 			    		title: response.hits[2].recipe.label,
 			    		author: response.hits[2].recipe.source,
+			    		ingredients: response.hits[0].recipe.ingredientLines,
 			    		description: result.instructions,
 			    		image: response.hits[2].recipe.image,
 			    		servings: result.servings,
@@ -154,6 +293,56 @@ $( document ).ready(function() {
 		    			rImage.addClass("rec-image");
 		    			$(".recipeImageTwo").append(rImage);
 		    			$(".descriptionTwo").append(recipeTwo.description);
+		    			function addrecipe(){
+						// uncomment if you get an error about firebase not being configured
+						firebase.initializeApp(config);
+
+
+						//set up appropriate variables
+						var rName = recipeTwo.title,
+							ringredients = [],
+							rDirections = [],
+							rServings = result.servings,
+							rImage = recipeTwo.image,
+							isPub = 'Y'; //$('#ispub').val()
+
+						//put all of the ingredients into an array
+							var vI = recipeTwo.ingredients;
+							console.log(vI)
+							ringredients.push(vI);
+
+						//put all of the directions/steps (if separated) in to an array
+							var vD = recipeTwo.description;
+							console.log(vD)
+							rDirections.push(vD);
+
+
+						//build the object with all recipe data
+						var postData={
+							enterBy:recipeTwo.author,
+							user:uid,
+							rName: recipeTwo.unique,
+							rStory: "",
+							ringredients: ringredients,
+							rDirections: rDirections,
+							rServings: rServings,
+							rImage: rImage,
+							rCategories: "",
+							date:dateStamp
+						}
+						var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+						var updates = {};
+						updates['public-recipes/' + newPostKey] = postData;
+						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+						return database.ref().update(updates);
+
+						}
+						$('body').on('click','img',function(){
+							addrecipe();
+							console.log("toast, maybe I did something");
+
+						});
 					});
 
 
