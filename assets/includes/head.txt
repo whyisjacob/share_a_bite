@@ -67,6 +67,7 @@ NAVIGATION Menu Popup
 	<div><a href="index.html">Home</a></div>
 	<div><a href="user.html">Account</a></div>
 	<div><a href="new_recipe.html">Create a New Recipe</a></div>
+	<div><a href="future.html">Future Integrations</a></div>
 </aside>
 
 
