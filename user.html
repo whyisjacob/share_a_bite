@@ -51,7 +51,7 @@
 		<section class="col-sm-10">
 			<h1 style="text-align:center;">My Account</h1>
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-5">
 					<h2>My Information</h2>
 
 					<article id="">
@@ -64,12 +64,20 @@
 					</article>
 
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-7">
 					<h2>My Recipes</h2>
-
-					<div id="user_recipes" >
-					</div>
-
+					<table id="user_recipes" class="table display">
+						<thead>
+							<tr>
+								<td>Recipe Name</td>
+								<td>Recipe Story</td>
+								<td>Date Added</td>
+								<td></td>
+							</tr>
+						</thead>
+					<tbody id="recipe_display" >
+					</tbody>
+					</table>
 				</div>
 			</div>
 
@@ -110,6 +118,8 @@
 	</aside>
 <script src="assets/js/timeago.js"></script>
 <script src="assets/js/recipe.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script>
@@ -163,12 +173,17 @@ $(document).ready(function(){
             var childData = childSnapshot.val();
             console.log(childData)
 
-            $('#user_recipes').prepend('<span class="col-sm-12"><hr> <h5>' + childData.rName + '</h5> <a href="results.html?rkey=' + key + '">View Recipe</a> </span>')
+            $('#recipe_display').prepend('<tr><td><h5>' + childData.rName + '</h5></td><td>' + childData.rStory + '</td><td>' + childData.date + '</td><td> <a href="results.html?rkey=' + key + '">View Recipe</a> </td></tr>')
+
 
         });
+		$('#user_recipes').DataTable( {
+		    // "paging":   false,
+		    // "ordering": false,
+		    // "info":     false
+		} );
+
       });
-
-
 
 
     } else {

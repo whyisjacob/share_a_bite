@@ -129,6 +129,8 @@
 <script src="assets/js/recipe.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script src="assets/js/timeago.js"></script>
+
 <script>
 $(document).ready(function(){
 	// $('#nav').load('assets/includes/head.txt')
@@ -164,7 +166,7 @@ $(document).ready(function(){
 	var recipeKey = getUrlParameter('rkey');
 	console.log(recipeKey)
 	if(recipeKey){
-		
+
 		console.log('true')
 		//GET RECIPE FROM DB
 		database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
@@ -207,6 +209,8 @@ $(document).ready(function(){
 		  	st++
 		  })
 
+		  jQuery("time.timeago").timeago();
+
 		}, function(errorObject) {
 		  console.log("The read failed: " + errorObject.code);
 		});
@@ -235,7 +239,6 @@ $(document).ready(function(){
 
 });
 </script>
-<script src="assets/js/timeago.js"></script>
 
 <script src="assets/js/app.js"></script>
 

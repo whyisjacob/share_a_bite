@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	  jQuery("time.timeago").timeago();
+	  // jQuery("time.timeago").timeago();
 	});
 
 	/**
