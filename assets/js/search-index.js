@@ -180,15 +180,21 @@ $( document ).ready(function() {
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
 						localStorage.setItem("postKey", newPostKey);
-
+						console.log(newPostKey);
 						}
-						var gotPostKey = localStorage.getItem("postKey");
-						// results.html?rkey=[whatever the rKey is]
+
+						
 
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							$("body").load(fLink + gotPostKey);
+							var gotPostKey = localStorage.getItem(postKey);
+							console.log(gotPostKey);
+						// results.html?rkey=[whatever the rKey is]
+							var sendieLink = fLink + gotPostKey;
+							console.log(sendieLink);
+							console.log(gotPostKey);	
+							$("body").load(sendieLink);
 							$(".recipe>h3").append(recipeZero.author);
 							$(".recipe_image").append(rImage);
 							$("#ingredients_list").append(recipeZero.ingredients);
@@ -274,13 +280,22 @@ $( document ).ready(function() {
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
 						localStorage.setItem("postKey", newPostKey);
+						console.log(newPostKey);
 
 
 						}
+						
+
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							$("body").load(fLink + gotPostKey);
+							var gotPostKey = localStorage.getItem(postKey);
+							console.log(gotPostKey);
+						// results.html?rkey=[whatever the rKey is]
+							var sendieLink = fLink + gotPostKey;
+							console.log(sendieLink);
+							console.log(gotPostKey);
+							$("body").load(sendieLink);
 							$(".recipe>h3").append(recipeOne.author);
 							$(".recipe_image").append(rImage);
 							$("#ingredients_list").append(recipeOne.ingredients);
@@ -364,12 +379,24 @@ $( document ).ready(function() {
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
 						localStorage.setItem("postKey", newPostKey);
-
+						console.log(newPostKey);
 						}
+						
+						var gotPostKey = localStorage.getItem(postKey);
+						var sendieLink = fLink + gotPostKey;
+
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
-							$("body").load(fLink + gotPostKey);
+							var gotPostKey = localStorage.getItem(postKey);
+							console.log(gotPostKey);
+						// results.html?rkey=[whatever the rKey is]
+							var sendieLink = fLink + gotPostKey;
+							console.log(sendieLink);
+							console.log(gotPostKey);
+
+							$("body").load(sendieLink);
+
 							$(".recipe>h3").append(recipeTwo.author);
 							$(".recipe_image").append(rImage);
 							$("#ingredients_list").append(recipeTwo.ingredients);
