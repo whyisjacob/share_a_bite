@@ -20,10 +20,13 @@ $( document ).ready(function() {
 
 		console.log(query);	
 
-		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html";
+		var rLink = "https://whyisjacob.github.io/share_a_bite/recipe-list.html";
 		var devLink = "../recipe-list.html";
+		var fLink = "https://whyisjacob.github.io/share_a_bite/results.html?rkey="
+
+
 	// this might just be hardcoded, trying to avoid CORS issues
-	$("#main-image").load(link).addClass(".for-hiding");
+	$("#main-image").load(rLink).addClass(".for-hiding");
 
 	var uEmail,
 		displayName,
@@ -131,6 +134,7 @@ $( document ).ready(function() {
 		    			rImage.addClass("rec-image");
 		    			$(".recipeImageZero").append(rImage);
 		    			$(".descriptionZero").append(recipeZero.description);
+
 		    			function addrecipe(){
 						// uncomment if you get an error about firebase not being configured
 						firebase.initializeApp(config);
@@ -175,11 +179,25 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
+						localStorage.setItem("postKey", newPostKey);
 
 						}
+						var gotPostKey = localStorage.getItem("postKey");
+						// results.html?rkey=[whatever the rKey is]
+
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
+							$("body").load(fLink + gotPostKey);
+							$(".recipe>h3").append(recipeZero.author);
+							$(".recipe_image").append(rImage);
+							$("#ingredients_list").append(recipeZero.ingredients);
+							$("#steps").append(recipeZero.description);
+
+
+
+
+
 						});
 					});
 
@@ -255,11 +273,20 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
+						localStorage.setItem("postKey", newPostKey);
+
 
 						}
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
+							$("body").load(fLink + gotPostKey);
+							$(".recipe>h3").append(recipeOne.author);
+							$(".recipe_image").append(rImage);
+							$("#ingredients_list").append(recipeOne.ingredients);
+							$("#steps").append(recipeOne.description);
+
+
 
 						});
 					});
@@ -336,11 +363,18 @@ $( document ).ready(function() {
 						updates['public-recipes/' + newPostKey] = postData;
 						updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
 						return database.ref().update(updates);
+						localStorage.setItem("postKey", newPostKey);
 
 						}
 						$('body').on('click','img',function(){
 							addrecipe();
 							console.log("toast, maybe I did something");
+							$("body").load(fLink + gotPostKey);
+							$(".recipe>h3").append(recipeTwo.author);
+							$(".recipe_image").append(rImage);
+							$("#ingredients_list").append(recipeTwo.ingredients);
+							$("#steps").append(recipeTwo.description);
+
 
 						});
 					});
