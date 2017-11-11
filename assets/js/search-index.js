@@ -10,7 +10,7 @@ $( document ).ready(function() {
 		var link = "https://whyisjacob.github.io/share_a_bite/recipe-list.html"
 
 	// this might just be hardcoded, trying to avoid CORS issues
-	// $("#main-image").load(link);
+	$("#main-image").load(link);
 	
 
 //edamam api data
@@ -47,6 +47,8 @@ $( document ).ready(function() {
 				var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
 				var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
+				//ajax one
+
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamZeroUrl,
 					method: "GET",
@@ -65,9 +67,11 @@ $( document ).ready(function() {
 		    		}
 
 		    		console.log(recipeZero);
+		    			$("#recipeZero").text(recipeZero.title);
 					});
-					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
-					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+
+				//ajax two
 
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamOneUrl,
@@ -88,8 +92,9 @@ $( document ).ready(function() {
 
 		    		console.log(recipeOne);
 					});
-					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
-					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+					
+
+				//ajax three
 
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamTwoUrl,
@@ -110,8 +115,9 @@ $( document ).ready(function() {
 
 		    		console.log(recipeTwo);
 					});
-					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
-					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+					
+
+				//ajax four
 
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamThreeUrl,
@@ -132,8 +138,9 @@ $( document ).ready(function() {
 
 		    		console.log(recipeThree);
 					});
-					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
-					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+					
+
+				//ajax five
 
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFourUrl,
@@ -154,8 +161,9 @@ $( document ).ready(function() {
 
 		    		console.log(recipeFour);
 					});
-					var mashApeKey = "6VjrbyPxBhmshMDBaeTjrWDPL7bYp15gxCejsnfSkIrzeSiI6W";
-					var mashApeHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+					
+
+				//ajax six
 
 				$.ajax({
 					url:"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract?forceExtraction=false&url=" + edamamFiveUrl,
