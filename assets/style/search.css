@@ -21,6 +21,10 @@
   position: absolute;
   z-index: -1;   
 }
+
+.for-hiding{
+	background-color: white;
+}
 #title {
 	border-bottom: 3px solid #60c0dd;
 }
