@@ -33,22 +33,9 @@
 </style>
 </head>
 <body>
-	<nav id="nav" class="navbar navbar-fixed-top">
-		<!-- <div class="container">
-			<div class="col-sm-3 menu" id="menu">
-				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-			</div>
-			<div class="col-sm-6 branding">
-				<img src="http://via.placeholder.com/150x50" alt="">
-			</div>
-			<div class="col-sm-3 login">
-				<a href="user.html">Login <span class="glyphicon glyphicon-user"></span></a><br>
-				Search <span class="glyphicon glyphicon-search"></span>
-			</div>
-		</div> -->
-	</nav>
+	<nav id="nav" class="navbar navbar-fixed-top">	</nav>
 	<div class="container-fluid">
-		<h2>Welcome <span id='username'></span>!</h2>
+		<h2 id='username'></h2>
 		
 	</div>
 
@@ -58,51 +45,65 @@
 
 
 <script>
-$(document).ready(function(){
-	$('#nav').load('assets/includes/head.txt')
-	$('#footer').load('assets/includes/footer.txt')
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+  authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+  databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+  projectId: "grab-a-bite-df6c2",
+  storageBucket: "grab-a-bite-df6c2.appspot.com",
+  messagingSenderId: "915542502205"
+};
+firebase.initializeApp(config);
+
+var defaultAuth = firebase.auth();
 
 
 
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-      authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-      databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-      projectId: "grab-a-bite-df6c2",
-      storageBucket: "grab-a-bite-df6c2.appspot.com",
-      messagingSenderId: "915542502205"
-    };
-    firebase.initializeApp(config);
-
-    var defaultAuth = firebase.auth();
-
-
-	var provider = new firebase.auth.GoogleAuthProvider();
-	firebase.auth().signInWithPopup(provider).then(function(result) {
-	// This gives you a Google Access Token. You can use it to access the Google API.
-	var token = result.credential.accessToken;
-	// The signed-in user info.
-	var user = result.user;
+firebase.auth().onAuthStateChanged(function(user) {
 	console.log(user)
-	if(user.I){
-		$('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+  if (user) {
+	    $('#username').html('Welcome, ' + user.displayName + '!<br>Please Wait…')
+	    setTimeout(function(){
+	    	reloadPage()
+	    }, 1000);
 
-		$('#username').html(user.displayName)
-	}
-	// ...
-	}).catch(function(error) {
-	// Handle Errors here.
-	var errorCode = error.code;
-	var errorMessage = error.message;
-	// The email of the user's account used.
-	var email = error.email;
-	// The firebase.auth.AuthCredential type that was used.
-	var credential = error.credential;
-	// ...
-	});
 
+  } else {
+  		var provider = new firebase.auth.GoogleAuthProvider();
+  		firebase.auth().signInWithPopup(provider).then(function(result) {
+  		// This gives you a Google Access Token. You can use it to access the Google API.
+  		var token = result.credential.accessToken;
+  		// The signed-in user info.
+  		var user = result.user;
+  		console.log(user)
+  		if(user.I){
+  			$('#username').html('Mayonnaise, ' + user.displayName + '!<br>Please Wait…')
+
+  			setTimeout(function(){
+  				reloadPage()
+  			}, 1000);
+
+  		}
+  		// ...
+  		}).catch(function(error) {
+  		// Handle Errors here.
+  		var errorCode = error.code;
+  		var errorMessage = error.message;
+  		// The email of the user's account used.
+  		var email = error.email;
+  		// The firebase.auth.AuthCredential type that was used.
+  		var credential = error.credential;
+  		// ...
+  		});	
+  	}
 });
+
+
+function reloadPage(){
+	window.location = 'user.html'
+}
+
 
 </script>
 <script src="assets/js/app.js"></script>
