@@ -29,7 +29,7 @@ h3 {
     padding-right: 5px;
 }
 .recipe_image {
-	background-image: url(../img/lasagna.jpg);
+	background-image: url();
 	width: 100%!important;
 	height: 300px;
 	background-color: #000;
@@ -55,6 +55,7 @@ h4 {
 }
 h4>.glyphicon{
 	float: right;
+	color: #F7931E;
 }
 h4>div{
 	font-size: 17px;
