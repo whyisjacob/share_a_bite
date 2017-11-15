@@ -224,7 +224,6 @@
 
 
 	function addrecipe(){
-		firebase.initializeApp(config);
 		var errorChk = 0;
 
 		$('.required').each(function(i, val){
@@ -240,64 +239,67 @@
 
 		if (errorChk === 1){
 			throw new Error('Please fill out all information');
-		}
-
-		var rName = $('#recipe_name').val(),
-			rStory = $('#recipe_story').val(),
-			ringredients = [],
-			rDirections = [],
-			oTemp = $('#ovtemp').val(),
-			rTime = $('#cooktime').val(),
-			rServings = $('#servings').val(),
-			rImage = $('#image').val(),
-			rCategories = [],
-			isPub = 'Y'; //$('#ispub').val()
-
-		$('.ingredients').each(function(i,val){
-			var v = $(val).val();
-			console.log(v)
-			ringredients.push(v);
-		})
-		$('.directions').each(function(i,val){
-			var v = $(val).val();
-			console.log(v)
-			rDirections.push(v);
-		})
-
-		$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
-		window.location = '#'
-		setTimeout(function(){
-			reloadPage()
-		}, 3000);
-
-
-		var postData={
-			enterBy:displayName,
-			user:uid,
-			rName: rName,
-			rStory: rStory,
-			ringredients: ringredients,
-			rDirections: rDirections,
-			oTemp: oTemp,
-			rTime: rTime,
-			rServings: rServings,
-			rImage: rImage,
-			rCategories: rCategories,
-			date:dateStamp
-		}
-		var newPostKey = firebase.database().ref().child('recipes').push().key;
-
-		if (isPub === "Y"){
-			var updates = {};
-			updates['public-recipes/' + newPostKey] = postData;
-			updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
-			return database.ref().update(updates);
 		} else {
-			var updates = {};
-			//don't add to public-recipes
-			updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
-			return database.ref().update(updates);
 
+			firebase.initializeApp(config);
+
+			var rName = $('#recipe_name').val(),
+				rStory = $('#recipe_story').val(),
+				ringredients = [],
+				rDirections = [],
+				oTemp = $('#ovtemp').val(),
+				rTime = $('#cooktime').val(),
+				rServings = $('#servings').val(),
+				rImage = $('#image').val(),
+				rCategories = [],
+				isPub = 'Y'; //$('#ispub').val()
+
+			$('.ingredients').each(function(i,val){
+				var v = $(val).val();
+				console.log(v)
+				ringredients.push(v);
+			})
+			$('.directions').each(function(i,val){
+				var v = $(val).val();
+				console.log(v)
+				rDirections.push(v);
+			})
+
+			$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
+			window.location = '#'
+			setTimeout(function(){
+				reloadPage()
+			}, 3000);
+
+
+			var postData={
+				enterBy:displayName,
+				user:uid,
+				rName: rName,
+				rStory: rStory,
+				ringredients: ringredients,
+				rDirections: rDirections,
+				oTemp: oTemp,
+				rTime: rTime,
+				rServings: rServings,
+				rImage: rImage,
+				rCategories: rCategories,
+				date:dateStamp
+			}
+			var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+			if (isPub === "Y"){
+				var updates = {};
+				updates['public-recipes/' + newPostKey] = postData;
+				updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+				return database.ref().update(updates);
+			} else {
+				var updates = {};
+				//don't add to public-recipes
+				updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+				return database.ref().update(updates);
+
+			}
 		}
 
 
