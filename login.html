@@ -34,7 +34,7 @@
 </head>
 <body>
 	<nav id="nav" class="navbar navbar-fixed-top">	</nav>
-	<div class="container-fluid">
+	<div class="container">
 		<h2 id='username'></h2>
 		
 	</div>
@@ -70,6 +70,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   } else {
+
+	$('#username').html('To log in,<br><br> Please make sure you allow popups and then reload the page if nothing is happening')
+
   		var provider = new firebase.auth.GoogleAuthProvider();
   		firebase.auth().signInWithPopup(provider).then(function(result) {
   		// This gives you a Google Access Token. You can use it to access the Google API.
@@ -78,7 +81,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   		var user = result.user;
   		console.log(user)
   		if(user.I){
-  			$('#username').html('Mayonnaise, ' + user.displayName + '!<br>Please Wait…')
+  			$('#username').html('Welcome, ' + user.displayName + '!<br>Please Wait…')
 
   			setTimeout(function(){
   				reloadPage()
