@@ -71,6 +71,18 @@ h4>div{
 	text-align: center;
 	margin: 15px 0;
 }
+#ingredients_list>li {
+    font-size: 25px;
+    line-height: 40px;
+	list-style: none;
+	cursor: pointer;
+}
+.glyphicon-remove-circle{
+    color: #F7931E;
+}
+.glyphicon-ok-circle{
+	color: #39B54A;
+}
 .steps>h5 {
     font-size: 25px;
     text-transform: uppercase;

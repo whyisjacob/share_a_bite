@@ -187,7 +187,7 @@ $(document).ready(function(){
 		  var ing = 1;
 		  ingredients.forEach(function(ingr){
 		  	// console.log(ingr);
-		  	$('#ingredients_list').append('<li>' + ingr + '</li>');
+		  	$('#ingredients_list').append('<li class="ing_display"> <span class=" glyphicon glyphicon-remove-circle"></span> ' + ingr + '</li>');
 		  	ing++
 		  })
 
@@ -238,6 +238,11 @@ $(document).ready(function(){
 
 
 });
+
+// $(document).on('click','.ing_display',function(){
+// 	$(this).removeClass('glyphicon-remove-circle')
+// 	$(this).addClass('glyphicon glyphicon-ok-circle')
+// })
 </script>
 
 <script src="assets/js/app.js"></script>

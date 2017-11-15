@@ -33,60 +33,48 @@
 </style>
 </head>
 <body>
-	<nav id="nav" class="navbar navbar-fixed-top">
-		<!-- <div class="container">
-			<div class="col-sm-3 menu" id="menu">
-				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-			</div>
-			<div class="col-sm-6 branding">
-				<img src="http://via.placeholder.com/150x50" alt="">
-			</div>
-			<div class="col-sm-3 login">
-				<a href="user.html">Login <span class="glyphicon glyphicon-user"></span></a><br>
-				Search <span class="glyphicon glyphicon-search"></span>
-			</div>
-		</div> -->
-	</nav>
+	<nav id="nav" class="navbar navbar-fixed-top">	</nav>
 	<div class="container-fluid">
 		<section class='col-sm-10'>
 			<h2>Add a new recipe</h2>
-
+			<div class="alert alert-warning hidden" role="alert">Please fill in all required fields</div>
+			
 			<label for="recipe_name">Recipe Name</label>
-			<input type="text" class="form-control" placeholder="Recipe Name " aria-describedby="sizing-addon2" name='recipe_name' id="recipe_name">
+			<input type="text" class="required form-control" placeholder="Recipe Name " aria-describedby="sizing-addon2" name='recipe_name' id="recipe_name">
 			<br>
 
 			<label for="recipe_story">Recipe Story</label>
-			<input type="textarea" class="form-control" placeholder="Recipe Story" aria-describedby="sizing-addon2" name='recipe_story' id="recipe_story">
+			<input type="textarea" class="required form-control" placeholder="Recipe Story" aria-describedby="sizing-addon2" name='recipe_story' id="recipe_story">
 			<br>
 
 			<span id="ingredientDisplay">
 				<label for="">Ingredients</label>
-				<input type="text" class="form-control ingredients" placeholder="Ingredients" aria-describedby="sizing-addon2" name='ingredient_1' id="ingredient_1">
+				<input type="text" class="required form-control ingredients" placeholder="Ingredients" aria-describedby="sizing-addon2" name='ingredient_1' id="ingredient_1">
 			</span>
 			<button id='addIngredient' class="btn btn-primary btn-sm pull-right">Add Ingredient</button>
 			<br>
 
 			<label for="ovtemp">Oven Temperature</label>
-			<input type="number" class="form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp' id="ovtemp">
+			<input type="number" class="required form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp' id="ovtemp">
 			<br>
 
 			<label for="cooktime">Cook/Prep Time (minutes)</label>
-			<input type="number" class="form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)" aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
+			<input type="number" class="required form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)" aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
 			<br>
 
 			<label for="servings">Servings</label>
-			<input type="number" class="form-control" placeholder="Total Servings" aria-describedby="sizing-addon2" name='servings' id="servings">
+			<input type="number" class="required form-control" placeholder="Total Servings" aria-describedby="sizing-addon2" name='servings' id="servings">
 			<br>
 
 			<span id="directionsDisplay">
 				<label for="servings">Directions</label>
-				<input type="text" class="form-control directions" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name='directions1' id="directions1">
+				<input type="text" class="required form-control directions" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name='directions1' id="directions1">
 			</span>
 			<button id='addDirection' class="btn btn-primary btn-sm pull-right">Add Step</button>
 			<br>
 
 			<label for="image">Image From the Web</label>
-			<input type="text" class="form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image' id="image">
+			<input type="text" class="required form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image' id="image">
 			<br>
 
 			<label for="ispub">Make the Recipe Public</label>
@@ -94,7 +82,7 @@
 			<br>
 
 			<label for="rcat">Recipe Categories</label>
-			<input type="text" class="form-control" placeholder="Enter your recipe categories" aria-describedby="sizing-addon2" name='rcat' id="rcat">
+			<input type="text" class="required form-control" placeholder="Enter your recipe categories" aria-describedby="sizing-addon2" name='rcat' id="rcat">
 			<br>
 
 
@@ -237,6 +225,22 @@
 
 	function addrecipe(){
 		firebase.initializeApp(config);
+		var errorChk = 0;
+
+		$('.required').each(function(i, val){
+			var v = $(this).val();
+			if(v == '' ||
+				v == ' '){
+					$(this).css('border-color','red');
+					$('.alert').removeClass('hidden');
+					window.location = '#';
+					errorChk = 1;
+				}
+		})
+
+		if (errorChk === 1){
+			throw new Error('Please fill out all information');
+		}
 
 		var rName = $('#recipe_name').val(),
 			rStory = $('#recipe_story').val(),
