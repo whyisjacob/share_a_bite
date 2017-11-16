@@ -1,96 +1,91 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 
 	<title>My Account</title>
 
 
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
 
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.min.js"
-	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
-<style>
+	<style>
 
-</style>
+	</style>
 </head>
+
 <body>
 	<nav id="nav" class="navbar navbar-fixed-top">
 	</nav>
 	<div class="container">
 
-	<div class="row">
-		<section class="col-sm-10">
-			<h1 style="text-align:center;">My Account</h1>
-			<div class="row">
-				<div class="col-sm-5">
-					<h2>My Information</h2>
+		<div class="row">
+			<section class="col-sm-10">
+				<h1 style="text-align:center;">My Account</h1>
+				<div class="row">
+					<div class="col-sm-5">
+						<h2>My Information</h2>
 
-					<article id="">
-						<img id="myimg" src="" alt="" class="" style="width:33%;margin-right:10px;"><br>
-						Name: <span id="name"></span><br>
-						Email: <span id="email"></span><br>
-						Last Login: <span id="logintime"></span><br>
+						<article id="">
+							<img id="myimg" src="" alt="" class="" style="width:33%;margin-right:10px;"><br> Name: <span id="name"></span><br>							Email: <span id="email"></span><br> Last Login: <span id="logintime"></span><br>
 
-						
-					</article>
 
+						</article>
+
+					</div>
+					<div class="col-sm-7">
+						<h2>My Recipes</h2>
+						<table id="user_recipes" class="table display">
+							<thead>
+								<tr>
+									<td>Recipe Name</td>
+									<td>Recipe Story</td>
+									<td>Date Added</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody id="recipe_display">
+							</tbody>
+						</table>
+					</div>
 				</div>
-				<div class="col-sm-7">
-					<h2>My Recipes</h2>
-					<table id="user_recipes" class="table display">
-						<thead>
-							<tr>
-								<td>Recipe Name</td>
-								<td>Recipe Story</td>
-								<td>Date Added</td>
-								<td></td>
-							</tr>
-						</thead>
-					<tbody id="recipe_display" >
-					</tbody>
-					</table>
-				</div>
-			</div>
 
-		</section>
-		<!--Add display on medium and large screen-->
-		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Grab A Bite -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-7521264905632007"
-			     data-ad-slot="3529081166"
-			     data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</aside>
+			</section>
+			<!--Add display on medium and large screen-->
+			<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Grab A Bite -->
+				<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7521264905632007" data-ad-slot="3529081166" data-ad-format="auto"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</aside>
 
-	</div>
-		
+		</div>
+
 	</div>
 
 	<footer id="footer" class="footer">
-		<hr>
-		© 2017 Share a Bite, Inc. All Rights reserved. 
+		<hr> © 2017 Share a Bite, Inc. All Rights reserved.
 		<a href="#">Privacy Policy</a> |
 		<a href="#">Terms of Use</a> <br><br>
 	</footer>
@@ -104,87 +99,88 @@
 		<div>Account</div>
 		<div>3rd Item</div>
 	</aside>
-<script src="assets/js/timeago.js"></script>
-<script src="assets/js/recipe.js"></script>
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="assets/js/timeago.js"></script>
+	<script src="assets/js/recipe.js"></script>
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+	<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-<script>
-var uEmail,
-	displayName,
-	emailVerified,
-	photoURL,
-	isAnonymous,
-	uid,
-	providerData;
-
-
-$(document).ready(function(){
-
-  var config = {
-    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-    projectId: "grab-a-bite-df6c2",
-    storageBucket: "grab-a-bite-df6c2.appspot.com",
-    messagingSenderId: "915542502205"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script>
+		var uEmail,
+			displayName,
+			emailVerified,
+			photoURL,
+			isAnonymous,
+			uid,
+			providerData;
 
 
-  //User is Signed in
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
-      console.log(user);
-      $('#name').html(user.displayName)
-      $('#email').html(user.email)
-      $('#myimg').attr('src', user.photoURL);
-      $('#logintime').html(user.metadata.lastSignInTime)
+		$(document).ready(function () {
 
-      uid = user.uid;
-
-
-      database.ref('/user-recipes/' + uid).orderByKey();
-      database.ref('/user-recipes/' + uid).orderByKey().once("value")
-        .then(function(snapshot) {
-          snapshot.forEach(function(childSnapshot) {
-
-          	//recipy key
-            var key = childSnapshot.key;
-            console.log(key)
-
-            //recipe data
-            var childData = childSnapshot.val();
-            console.log(childData)
-
-            $('#recipe_display').prepend('<tr><td><h5>' + childData.rName + '</h5></td><td>' + childData.rStory + '</td><td>' + childData.date + '</td><td> <a href="results.html?rkey=' + key + '">View Recipe</a> </td></tr>')
+			var config = {
+				apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+				authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+				databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+				projectId: "grab-a-bite-df6c2",
+				storageBucket: "grab-a-bite-df6c2.appspot.com",
+				messagingSenderId: "915542502205"
+			};
+			firebase.initializeApp(config);
+			var database = firebase.database();
 
 
-        });
-		$('#user_recipes').DataTable( {
-		    // "paging":   false,
-		    // "ordering": false,
-		    // "info":     false
-		} );
+			//User is Signed in
+			firebase.auth().onAuthStateChanged(function (user) {
+				if (user) {
+					// User is signed in.
+					$('#login').attr('href', 'user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+					console.log(user);
+					$('#name').html(user.displayName)
+					$('#email').html(user.email)
+					$('#myimg').attr('src', user.photoURL);
+					$('#logintime').html(user.metadata.lastSignInTime)
 
-      });
+					uid = user.uid;
 
 
-    } else {
-      // No user is signed in.
-      console.log('User not logged in')
-    }
-  });
+					database.ref('/user-recipes/' + uid).orderByKey();
+					database.ref('/user-recipes/' + uid).orderByKey().once("value")
+						.then(function (snapshot) {
+							snapshot.forEach(function (childSnapshot) {
 
-});
-</script>
-<script src="assets/js/app.js"></script>
+								//recipy key
+								var key = childSnapshot.key;
+								console.log(key)
+
+								//recipe data
+								var childData = childSnapshot.val();
+								console.log(childData)
+
+								$('#recipe_display').prepend('<tr><td><h5>' + childData.rName + '</h5></td><td>' + childData.rStory +
+									'</td><td>' + childData.date + '</td><td> <a href="results.html?rkey=' + key +
+									'">View Recipe</a> </td></tr>')
+
+
+							});
+							$('#user_recipes').DataTable({
+								// "paging":   false,
+								// "ordering": false,
+								// "info":     false
+							});
+
+						});
+
+
+				} else {
+					// No user is signed in.
+					console.log('User not logged in')
+				}
+			});
+
+		});
+	</script>
+	<script src="assets/js/app.js"></script>
 
 </body>
 
 </html>
-

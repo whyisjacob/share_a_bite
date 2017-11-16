@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 
 	<title>Create New Recipe</title>
 
 
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
 
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.min.js"
-	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
 
 
-<style>
+	<style>
 
-</style>
+	</style>
 </head>
+
 <body>
-	<nav id="nav" class="navbar navbar-fixed-top">	</nav>
+	<nav id="nav" class="navbar navbar-fixed-top"> </nav>
 	<div class="container-fluid">
 		<section class='col-sm-10'>
 			<h2>Add a new recipe</h2>
 			<div class="alert alert-warning hidden" role="alert">Please fill in all required fields</div>
-			
+
 			<label for="recipe_name">Recipe Name</label>
-			<input type="text" class="required form-control" placeholder="Recipe Name " aria-describedby="sizing-addon2" name='recipe_name' id="recipe_name">
+			<input type="text" class="required form-control" placeholder="Recipe Name " aria-describedby="sizing-addon2" name='recipe_name'
+			    id="recipe_name">
 			<br>
 
 			<label for="recipe_story">Recipe Story</label>
-			<input type="textarea" class="required form-control" placeholder="Recipe Story" aria-describedby="sizing-addon2" name='recipe_story' id="recipe_story">
+			<input type="textarea" class="required form-control" placeholder="Recipe Story" aria-describedby="sizing-addon2" name='recipe_story'
+			    id="recipe_story">
 			<br>
 
 			<span id="ingredientDisplay">
@@ -55,15 +60,18 @@
 			<br>
 
 			<label for="ovtemp">Oven Temperature</label>
-			<input type="number" class="required form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp' id="ovtemp">
+			<input type="number" class="required form-control" placeholder="Oven Temperature " aria-describedby="sizing-addon2" name='ovtemp'
+			    id="ovtemp">
 			<br>
 
 			<label for="cooktime">Cook/Prep Time (minutes)</label>
-			<input type="number" class="required form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)" aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
+			<input type="number" class="required form-control" placeholder="Total Cook and Preparation Time (E.g. type 25 for 25 min)"
+			    aria-describedby="sizing-addon2" name='cooktime' id="cooktime">
 			<br>
 
 			<label for="servings">Servings</label>
-			<input type="number" class="required form-control" placeholder="Total Servings" aria-describedby="sizing-addon2" name='servings' id="servings">
+			<input type="number" class="required form-control" placeholder="Total Servings" aria-describedby="sizing-addon2" name='servings'
+			    id="servings">
 			<br>
 
 			<span id="directionsDisplay">
@@ -74,7 +82,8 @@
 			<br>
 
 			<label for="image">Image From the Web</label>
-			<input type="text" class="required form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image' id="image">
+			<input type="text" class="required form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image'
+			    id="image">
 			<br>
 
 			<label for="ispub">Make the Recipe Public</label>
@@ -82,7 +91,8 @@
 			<br>
 
 			<label for="rcat">Recipe Categories</label>
-			<input type="text" class="required form-control" placeholder="Enter your recipe categories" aria-describedby="sizing-addon2" name='rcat' id="rcat">
+			<input type="text" class="required form-control" placeholder="Enter your recipe categories" aria-describedby="sizing-addon2"
+			    name='rcat' id="rcat">
 			<br>
 
 
@@ -93,225 +103,223 @@
 		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
 			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Grab A Bite -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-7521264905632007"
-			     data-ad-slot="3529081166"
-			     data-ad-format="auto"></ins>
+			<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7521264905632007" data-ad-slot="3529081166" data-ad-format="auto"></ins>
 			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
+				(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 		</aside>
 
-		
+
 	</div>
 
 	<footer id="footer" class="footer">
 	</footer>
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-<script src="assets/js/timeago.js"></script>
-<script src="assets/js/recipe.js"></script>
-<script src="assets/js/app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script src="assets/js/timeago.js"></script>
+	<script src="assets/js/recipe.js"></script>
+	<script src="assets/js/app.js"></script>
 
-<script>
-// $(document).ready(function(){
-	var d = new Date();
-	var y = d.getFullYear();
-	var m = d.getMonth();
-	console.log(m);
-	switch(m){
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-			m = 0 + d.getMonth();
-		break;
-	}
-	m++
+	<script>
+		// $(document).ready(function(){
+		var d = new Date();
+		var y = d.getFullYear();
+		var m = d.getMonth();
+		console.log(m);
+		switch (m) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+				m = 0 + d.getMonth();
+				break;
+		}
+		m++
 
-	d = d.getDate();
-	switch(d){
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-			d = '0' + d.getDate();
-		break;
-	}
+		d = d.getDate();
+		switch (d) {
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+				d = '0' + d.getDate();
+				break;
+		}
 
-	var dateStamp = y + '-' + m + '-' + d;
-	console.log(dateStamp)
+		var dateStamp = y + '-' + m + '-' + d;
+		console.log(dateStamp)
 
-	var ingNum = 2,
-		dirNum = 2,
-		uEmail,
-		displayName,
-		emailVerified,
-		photoURL,
-		isAnonymous,
-		uid,
-		providerData;
+		var ingNum = 2,
+			dirNum = 2,
+			uEmail,
+			displayName,
+			emailVerified,
+			photoURL,
+			isAnonymous,
+			uid,
+			providerData;
 
-	// $('#nav').load('assets/includes/head.txt')
-	// $('#footer').load('assets/includes/footer.txt')
+		// $('#nav').load('assets/includes/head.txt')
+		// $('#footer').load('assets/includes/footer.txt')
 
-	var config = {
-	  apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-	  authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-	  databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-	  projectId: "grab-a-bite-df6c2",
-	  storageBucket: "grab-a-bite-df6c2.appspot.com",
-	  messagingSenderId: "915542502205"
-	};
-	firebase.initializeApp(config);
+		var config = {
+			apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+			authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+			databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+			projectId: "grab-a-bite-df6c2",
+			storageBucket: "grab-a-bite-df6c2.appspot.com",
+			messagingSenderId: "915542502205"
+		};
+		firebase.initializeApp(config);
 
-	var database = firebase.database();
-	var defaultAuth = firebase.auth();
-	console.log(defaultAuth)
-
-
-	firebase.auth().onAuthStateChanged(function(user) {
-		console.log(user)
-	  if (user) {
-	    // User is signed in.
-	    $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
-
-	    $('h2').prepend(user.displayName + ', Please ')
-	    uEmail = user.email
-	    displayName = user.displayName;
-	    emailVerified = user.emailVerified;
-	    photoURL = user.photoURL;
-	    isAnonymous = user.isAnonymous;
-	    uid = user.uid;
-	    providerData = user.providerData;
-
-	    console.log(displayName)
-		console.log(emailVerified)
-		console.log(photoURL)
-		console.log(isAnonymous)
-		console.log(uid)
-		console.log(providerData)
-
-	  } else {
-	    // No user is signed in.
-	    $('.col-sm-10').html('<h2>Please login to add a new recipe</h2>')
-	  }
-	});
+		var database = firebase.database();
+		var defaultAuth = firebase.auth();
+		console.log(defaultAuth)
 
 
-	//ADD Ingredient
-	$('#addIngredient').on('click', function(){
-		$('#ingredientDisplay').append('<input type="text" class="form-control ingredients" placeholder="Ingredients" aria-describedby="sizing-addon2" name="ingredient_'+ingNum+'" id="ingredient_'+ingNum+'">')
-		ingNum++
-	})
+		firebase.auth().onAuthStateChanged(function (user) {
+			console.log(user)
+			if (user) {
+				// User is signed in.
+				$('#login').attr('href', 'user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
+
+				$('h2').prepend(user.displayName + ', Please ')
+				uEmail = user.email
+				displayName = user.displayName;
+				emailVerified = user.emailVerified;
+				photoURL = user.photoURL;
+				isAnonymous = user.isAnonymous;
+				uid = user.uid;
+				providerData = user.providerData;
+
+				console.log(displayName)
+				console.log(emailVerified)
+				console.log(photoURL)
+				console.log(isAnonymous)
+				console.log(uid)
+				console.log(providerData)
+
+			} else {
+				// No user is signed in.
+				$('.col-sm-10').html('<h2>Please login to add a new recipe</h2>')
+			}
+		});
 
 
-	//ADD Step
-	$('#addDirection').on('click', function(){
-		$('#directionsDisplay').append('<input type="text" class="form-control directions" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name="directions'+dirNum+'" id="directions'+dirNum+'">')
-		dirNum++
-	})
+		//ADD Ingredient
+		$('#addIngredient').on('click', function () {
+			$('#ingredientDisplay').append(
+				'<input type="text" class="form-control ingredients" placeholder="Ingredients" aria-describedby="sizing-addon2" name="ingredient_' +
+				ingNum + '" id="ingredient_' + ingNum + '">')
+			ingNum++
+		})
 
 
-	function addrecipe(){
-		var errorChk = 0;
+		//ADD Step
+		$('#addDirection').on('click', function () {
+			$('#directionsDisplay').append(
+				'<input type="text" class="form-control directions" placeholder="Recipe Directions" aria-describedby="sizing-addon2" name="directions' +
+				dirNum + '" id="directions' + dirNum + '">')
+			dirNum++
+		})
 
-		$('.required').each(function(i, val){
-			var v = $(this).val();
-			if(v == '' ||
-				v == ' '){
-					$(this).css('border-color','red');
+
+		function addrecipe() {
+			var errorChk = 0;
+
+			$('.required').each(function (i, val) {
+				var v = $(this).val();
+				if (v == '' ||
+					v == ' ') {
+					$(this).css('border-color', 'red');
 					$('.alert').removeClass('hidden');
 					errorChk = 1;
 				}
-		})
-
-		if (errorChk === 1){
-			throw new Error('Please fill out all information');
-		} else {
-
-			firebase.initializeApp(config);
-
-			var rName = $('#recipe_name').val(),
-				rStory = $('#recipe_story').val(),
-				ringredients = [],
-				rDirections = [],
-				oTemp = $('#ovtemp').val(),
-				rTime = $('#cooktime').val(),
-				rServings = $('#servings').val(),
-				rImage = $('#image').val(),
-				rCategories = [],
-				isPub = 'Y'; //$('#ispub').val()
-
-			$('.ingredients').each(function(i,val){
-				var v = $(val).val();
-				console.log(v)
-				ringredients.push(v);
-			})
-			$('.directions').each(function(i,val){
-				var v = $(val).val();
-				console.log(v)
-				rDirections.push(v);
 			})
 
-			$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
-			window.location = '#'
-			setTimeout(function(){
-				reloadPage()
-			}, 3000);
-
-
-			var postData={
-				enterBy:displayName,
-				user:uid,
-				rName: rName,
-				rStory: rStory,
-				ringredients: ringredients,
-				rDirections: rDirections,
-				oTemp: oTemp,
-				rTime: rTime,
-				rServings: rServings,
-				rImage: rImage,
-				rCategories: rCategories,
-				date:dateStamp
-			}
-			var newPostKey = firebase.database().ref().child('recipes').push().key;
-
-			if (isPub === "Y"){
-				var updates = {};
-				updates['public-recipes/' + newPostKey] = postData;
-				updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
-				return database.ref().update(updates);
+			if (errorChk === 1) {
+				throw new Error('Please fill out all information');
 			} else {
-				var updates = {};
-				//don't add to public-recipes
-				updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
-				return database.ref().update(updates);
 
+				firebase.initializeApp(config);
+
+				var rName = $('#recipe_name').val(),
+					rStory = $('#recipe_story').val(),
+					ringredients = [],
+					rDirections = [],
+					oTemp = $('#ovtemp').val(),
+					rTime = $('#cooktime').val(),
+					rServings = $('#servings').val(),
+					rImage = $('#image').val(),
+					rCategories = [],
+					isPub = 'Y'; //$('#ispub').val()
+
+				$('.ingredients').each(function (i, val) {
+					var v = $(val).val();
+					console.log(v)
+					ringredients.push(v);
+				})
+				$('.directions').each(function (i, val) {
+					var v = $(val).val();
+					console.log(v)
+					rDirections.push(v);
+				})
+
+				$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
+				window.location = '#'
+				setTimeout(function () {
+					reloadPage()
+				}, 3000);
+
+
+				var postData = {
+					enterBy: displayName,
+					user: uid,
+					rName: rName,
+					rStory: rStory,
+					ringredients: ringredients,
+					rDirections: rDirections,
+					oTemp: oTemp,
+					rTime: rTime,
+					rServings: rServings,
+					rImage: rImage,
+					rCategories: rCategories,
+					date: dateStamp
+				}
+				var newPostKey = firebase.database().ref().child('recipes').push().key;
+
+				if (isPub === "Y") {
+					var updates = {};
+					updates['public-recipes/' + newPostKey] = postData;
+					updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+					return database.ref().update(updates);
+				} else {
+					var updates = {};
+					//don't add to public-recipes
+					updates['/user-recipes/' + uid + '/' + newPostKey] = postData;
+					return database.ref().update(updates);
+
+				}
 			}
+
+
+		} //addrecipe
+
+		function reloadPage() {
+			window.location = 'user.html'
 		}
-
-
-	}//addrecipe
-
-	function reloadPage(){
-		window.location = 'user.html'
-	}
-// });
-
-</script>
+		// });
+	</script>
 
 </body>
 
 </html>
-

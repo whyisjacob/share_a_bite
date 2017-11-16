@@ -1,30 +1,30 @@
-jQuery(document).ready(function() {
-	  // jQuery("time.timeago").timeago();
-	});
+jQuery(document).ready(function () {
+	// jQuery("time.timeago").timeago();
+});
 
-	/**
-	* @description Displays contents of recipe sections
-	*/
-	$(document).on('click','h4', function(){
-		var display = $(this).attr('data-display');
-		if(display == 'hidden'){
-			$(this).attr('data-display','show');
-			$(this).children('span').attr('class', 'glyphicon glyphicon-menu-down');
-			$(this).siblings('div').removeClass('hidden');
-		} else {
-			$(this).attr('data-display','hidden');
-			$(this).children('span').attr('class', 'glyphicon glyphicon-menu-right');
-			$(this).siblings('div').addClass('hidden');
-		}
-	});
+/**
+ * @description Displays contents of recipe sections
+ */
+$(document).on('click', 'h4', function () {
+	var display = $(this).attr('data-display');
+	if (display == 'hidden') {
+		$(this).attr('data-display', 'show');
+		$(this).children('span').attr('class', 'glyphicon glyphicon-menu-down');
+		$(this).siblings('div').removeClass('hidden');
+	} else {
+		$(this).attr('data-display', 'hidden');
+		$(this).children('span').attr('class', 'glyphicon glyphicon-menu-right');
+		$(this).siblings('div').addClass('hidden');
+	}
+});
 
-	$(document).on('click','.ing_display',function(){
-		$(this).children('.glyphicon').toggleClass('glyphicon-remove-circle')
-		$(this).children('.glyphicon').toggleClass(' glyphicon-ok-circle')
-	})
-		
+$(document).on('click', '.ing_display', function () {
+	$(this).children('.glyphicon').toggleClass('glyphicon-remove-circle')
+	$(this).children('.glyphicon').toggleClass(' glyphicon-ok-circle')
+})
 
-	/*$(document).on('click','li', function(){
+
+/*$(document).on('click','li', function(){
 
 		//I'd like to give the unordered lists a data-attribute with a value that represents the ingredient listed inside. Ingredient by itself, not including the measurement, etc. Adding the nutritional value by presented measurement could be an interesting little math project.
 		console.log(this);
@@ -59,9 +59,9 @@ jQuery(document).ready(function() {
 	/**
 	* @description Menu Display
 	*/
-	// $(document).on('click','#menu', function(){
-	// 	$('#navigation').toggleClass('hidden');
-	// })
-	// $(document).on('click', 'article', function(){
-	// 	$('#navigation').addClass('hidden');
-	// })
+// $(document).on('click','#menu', function(){
+// 	$('#navigation').toggleClass('hidden');
+// })
+// $(document).on('click', 'article', function(){
+// 	$('#navigation').addClass('hidden');
+// })

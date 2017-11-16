@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 
 	<title id="title"></title>
 
 
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
 
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.min.js"
-	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
-<style>
+	<style>
 
-</style>
+	</style>
 </head>
+
 <body>
 	<nav id="nav" class="navbar navbar-fixed-top">
 
@@ -45,7 +48,7 @@
 			</section>
 
 			<section id="categories" class="categories">
-				This would be perfect for &nbsp; 
+				This would be perfect for &nbsp;
 				<a href="#">Breakfast</a> <a href="#">Lunch</a> <a href="#">Dinner</a>
 			</section>
 
@@ -60,7 +63,7 @@
 					The Story <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
 				</h4>
 				<div id="story" class="description ">
-					
+
 				</div>
 			</section>
 
@@ -96,7 +99,7 @@
 						</div>
 					</div>
 					<div id='steps' class="steps">
-						
+
 					</div>
 				</div>
 			</section>
@@ -107,147 +110,145 @@
 		<aside class="col-md-2 hidden-xs hidden-sm hidden-print visible-md-block visible-lg-block">
 			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Grab A Bite -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-7521264905632007"
-			     data-ad-slot="3529081166"
-			     data-ad-format="auto"></ins>
+			<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7521264905632007" data-ad-slot="3529081166" data-ad-format="auto"></ins>
 			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
+				(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 		</aside>
 	</div>
 
 	<footer id="footer" class="footer">
-		<hr>
-		© 2017 Share a Bite, Inc. All Rights reserved. 
+		<hr> © 2017 Share a Bite, Inc. All Rights reserved.
 		<a href="#">Privacy Policy</a> |
 		<a href="#">Terms of Use</a> <br><br>
 	</footer>
 
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-<script src="assets/js/recipe.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script src="assets/js/recipe.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-<script src="assets/js/timeago.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script src="assets/js/timeago.js"></script>
 
-<script>
-$(document).ready(function(){
-	// $('#nav').load('assets/includes/head.txt')
-	// $('#footer').load('assets/includes/footer.txt')
-
-
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-    authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-    databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-    projectId: "grab-a-bite-df6c2",
-    storageBucket: "grab-a-bite-df6c2.appspot.com",
-    messagingSenderId: "915542502205"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
+	<script>
+		$(document).ready(function () {
+			// $('#nav').load('assets/includes/head.txt')
+			// $('#footer').load('assets/includes/footer.txt')
 
 
-	var getUrlParameter = function getUrlParameter(sParam) {
-	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		sURLVariables = sPageURL.split('&'),
-		sParameterName,
-		i;
-		for (i = 0; i < sURLVariables.length; i++) {
-			sParameterName = sURLVariables[i].split('=');
-			if (sParameterName[0] === sParam) {
-				return sParameterName[1] === undefined ? true : sParameterName[1];
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+				authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+				databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+				projectId: "grab-a-bite-df6c2",
+				storageBucket: "grab-a-bite-df6c2.appspot.com",
+				messagingSenderId: "915542502205"
+			};
+			firebase.initializeApp(config);
+			var database = firebase.database();
+
+
+			var getUrlParameter = function getUrlParameter(sParam) {
+				var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : sParameterName[1];
+					}
+				}
+			};
+			var recipeKey = getUrlParameter('rkey');
+			// ABF testing var recipeKey = localStorage.getItem("postKey");
+			console.log(recipeKey)
+			if (recipeKey) {
+
+				console.log('true')
+				//GET RECIPE FROM DB
+				database.ref('/public-recipes/' + recipeKey).on("value", function (snapshot) {
+					// console.log(snapshot.val());
+					var v = snapshot.val();
+					console.log(v)
+
+					$('#recipe_name').html(v.rName);
+					$('.recipe_image').css({
+						'background-image': 'url(' + v.rImage + ')'
+					});
+					$('#title').html(v.rName + ' Recipe');
+					$('#addby').html(v.enterBy);
+					$('#story').html(v.rStory);
+
+					$('time').attr('datetime', v.date);
+
+					//display ingredients
+					var ingredients = v.ringredients
+					var ing = 1;
+					ingredients.forEach(function (ingr) {
+						// console.log(ingr);
+						$('#ingredients_list').append(
+							'<li class="ing_display"> <span class=" glyphicon glyphicon-remove-circle"></span> ' + ingr + '</li>');
+						ing++
+					})
+
+
+					if (v.oTemp == '0') {
+						$('#oven').html('Not Needed');
+					} else {
+						$('#oven').html(v.oTemp + '&#730;');
+					}
+					$('#clock').html(v.rTime + ' Min');
+					$('#servings').html(v.rServings)
+
+					//display all directions
+					var steps = v.rDirections
+					var st = 1;
+					steps.forEach(function (theSteps) {
+						// console.log(theSteps);
+						$('#steps').append('<h5>Step ' + st + '</h5><p>' + theSteps + '</p>');
+						st++
+					})
+
+					jQuery("time.timeago").timeago();
+
+				}, function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+				});
+
+
+			} else {
+				console.log('false')
+				//GET RECIPE FROM SOMEWHERE ELSE
+				$('.col-md-10').html(
+					'<h2>Please search for a recipe or return to your account page if you are logged on to display a recipe</h2>')
 			}
-		}
-	};
-	var recipeKey = getUrlParameter('rkey');
-	// ABF testing var recipeKey = localStorage.getItem("postKey");
-	console.log(recipeKey)
-	if(recipeKey){
-
-		console.log('true')
-		//GET RECIPE FROM DB
-		database.ref('/public-recipes/' + recipeKey).on("value", function(snapshot) {
-		  // console.log(snapshot.val());
-		  var v = snapshot.val();
-		  console.log(v)
-
-		  $('#recipe_name').html(v.rName);
-		  $('.recipe_image').css({'background-image': 'url('+v.rImage+')'});
-		  $('#title').html(v.rName + ' Recipe');
-		  $('#addby').html(v.enterBy);
-		  $('#story').html(v.rStory);
-		 
-		  $('time').attr('datetime', v.date);
-		  
-		  //display ingredients
-		  var ingredients = v.ringredients
-		  var ing = 1;
-		  ingredients.forEach(function(ingr){
-		  	// console.log(ingr);
-		  	$('#ingredients_list').append('<li class="ing_display"> <span class=" glyphicon glyphicon-remove-circle"></span> ' + ingr + '</li>');
-		  	ing++
-		  })
 
 
-		  if (v.oTemp == '0'){
-		  	$('#oven').html('Not Needed');
-		  } else{
-		  	$('#oven').html(v.oTemp + '&#730;');
-		  }
-		  $('#clock').html(v.rTime + ' Min');
-		  $('#servings').html(v.rServings)
+			// firebase.auth().onAuthStateChanged(function(user) {
+			//   if (user) {
+			//     // User is signed in.
+			//     console.log(user);
+			//     $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
 
-		  //display all directions
-		  var steps = v.rDirections
-		  var st = 1;
-		  steps.forEach(function(theSteps){
-		  	// console.log(theSteps);
-		  	$('#steps').append('<h5>Step ' + st + '</h5><p>' + theSteps + '</p>');
-		  	st++
-		  })
+			//   } else {
+			//     // No user is signed in.
+			//     console.log('User not logged in')
+			//   }
+			// });
 
-		  jQuery("time.timeago").timeago();
 
-		}, function(errorObject) {
-		  console.log("The read failed: " + errorObject.code);
+
 		});
 
+		// $(document).on('click','.ing_display',function(){
+		// 	$(this).removeClass('glyphicon-remove-circle')
+		// 	$(this).addClass('glyphicon glyphicon-ok-circle')
+		// })
+	</script>
 
-	} else{
-		console.log('false')
-		//GET RECIPE FROM SOMEWHERE ELSE
-		$('.col-md-10').html('<h2>Please search for a recipe or return to your account page if you are logged on to display a recipe</h2>')
-	}
-
-
-	// firebase.auth().onAuthStateChanged(function(user) {
-	//   if (user) {
-	//     // User is signed in.
-	//     console.log(user);
-	//     $('#login').attr('href','user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
-
-	//   } else {
-	//     // No user is signed in.
-	//     console.log('User not logged in')
-	//   }
-	// });
-
-
-
-});
-
-// $(document).on('click','.ing_display',function(){
-// 	$(this).removeClass('glyphicon-remove-circle')
-// 	$(this).addClass('glyphicon glyphicon-ok-circle')
-// })
-</script>
-
-<script src="assets/js/app.js"></script>
+	<script src="assets/js/app.js"></script>
 
 </body>
 
 </html>
-

@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 
 	<title>Logout</title>
 
 
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
 
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.min.js"
-	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/recipe.css">
 
 
 
-<style>
+	<style>
 
-</style>
+	</style>
 </head>
+
 <body>
-	<nav id="nav" class="navbar navbar-fixed-top">	</nav>
-	<div class="container main">		
+	<nav id="nav" class="navbar navbar-fixed-top"> </nav>
+	<div class="container main">
 	</div>
 
 	<footer id="footer" class="footer">
 	</footer>
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 
 
-<script>
-$(document).ready(function(){
-	$('#nav').load('assets/includes/head.txt')
-	$('#footer').load('assets/includes/footer.txt')
+	<script>
+		$(document).ready(function () {
+			$('#nav').load('assets/includes/head.txt')
+			$('#footer').load('assets/includes/footer.txt')
 
 
 
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
-      authDomain: "grab-a-bite-df6c2.firebaseapp.com",
-      databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
-      projectId: "grab-a-bite-df6c2",
-      storageBucket: "grab-a-bite-df6c2.appspot.com",
-      messagingSenderId: "915542502205"
-    };
-    firebase.initializeApp(config);
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyCgoRfIkQr6LbDgERECflwrP4Dmi2-TPKA",
+				authDomain: "grab-a-bite-df6c2.firebaseapp.com",
+				databaseURL: "https://grab-a-bite-df6c2.firebaseio.com",
+				projectId: "grab-a-bite-df6c2",
+				storageBucket: "grab-a-bite-df6c2.appspot.com",
+				messagingSenderId: "915542502205"
+			};
+			firebase.initializeApp(config);
 
-    var defaultAuth = firebase.auth();
-
-
-	var provider = new firebase.auth.GoogleAuthProvider();
-	firebase.auth().signOut().then(function() {
-	  // Sign-out successful.
-	  $('.main').html('<h2>SignOut Successful</h2>')
-	}).catch(function(error) {
-	  // An error happened.
-	});
+			var defaultAuth = firebase.auth();
 
 
-});
+			var provider = new firebase.auth.GoogleAuthProvider();
+			firebase.auth().signOut().then(function () {
+				// Sign-out successful.
+				$('.main').html('<h2>SignOut Successful</h2>')
+			}).catch(function (error) {
+				// An error happened.
+			});
 
-</script>
+
+		});
+	</script>
 
 </body>
 
 </html>
-
