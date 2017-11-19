@@ -10,36 +10,112 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/base.css">
 	<link rel="stylesheet" type="text/css" href="assets/style/search.css">
+	<style>
+		.hero {
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.hero_txt {
+			position: absolute;
+			width: 50%;
+			text-align: center;
+			margin: 0 auto!important;
+			top: 15%;
+			left: 25%;
+			color: #fff;
+			text-transform: capitalize;
+			font-size: 24px !important;
+		}
+
+		.hero_txt>h2,
+		.hero_txt>h2>a {
+			font-size: 24px !important;
+			color: #fff;
+		}
+
+		video {
+			position: static;
+			width: 100%;
+			height: 50%;
+			z-index: -100;
+			background: url('assets/img/splash-cover.jpeg') no-repeat;
+			background-size: cover;
+			transition: 1s opacity;
+		}
+	</style>
 </head>
 
 <body class="">
 	<nav id="nav" class="navbar navbar-fixed-top"></nav>
-	<div id="main-image">
-
-		<div class="container-fluid" id="">
-			<div class="row">
-				<div class="jumbotron text-center" id="search-bar">
+	<div class="container-fluid" id="">
+		<div class="row">
+			<div class="hero" id="hero">
+				<video poster="assets/img/splash-cover.jpeg" id="bgvid" playsinline autoplay muted loop>
+					<!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+					<source src="assets/video/food_montage_no_logo.mp4" type="video/mp4">
+				</video>
+				<div class='hero_txt'>
+					<img src="assets/img/share_a_bite_white.svg" alt="Share A Bite!">
 					<h2>
-						<span class="text-center" id="title">share a bite</span>
+						Sharing Recipes for Generations.
+						<br>
+						<br>
+						<div class="input-group input-group-lg col-sm-6 col-sm-offset-3" id="search">
+							<span class="input-group-addon glyphicon glyphicon-search" id="home_search"><a href="search.html?search=" title="Search for Recipes"></a></span>
+							<input type="text" class="form-control" placeholder="hungry?" aria-describedby="sizing-addon1" id="search-input">
+						</div>
+						<br>
+						<a href="#main"><span class="glyphicon glyphicon-chevron-down"></span></a>
+					</h2>
+				</div>
+			</div>
+			<div id="main" class="col-sm-12 row">
+				<div class="content col-sm-9">
+					<h2>
+						<span class="text-center" id="title">Our Mission</span>
 					</h2>
 					<p>
-						Welcome to Share a Bite. Our mission is to preserve your cherished family recipes. We understand that a food recipe is more
-						than a set of instructions or ingredients that simply create a meal. A great family recipe has a story. It has the
-						power to unite loved ones, and become a source of some of the best family memories. So share your family recipe, share
-						its story and let's inspire the next generation to Share A Bite.
+						Is to preserve your cherished family recipes. We understand that a food recipe is more than a set of instructions or ingredients
+						that simply create a meal. A great family recipe has a story. It has the power to unite loved ones, and become a source
+						of some of the best family memories. So share your family recipe, share its story and let's inspire the next generation
+						to Share A Bite.
 					</p>
-					<!-- 	<div class="input-group input-group-lg col-sm-6 col-sm-offset-3" id="search">
-						  <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1" data-link="recipe-list.html"><a href="recipe-list.html" title="list-results"></a></span>
-						  <input type="text" class="form-control" placeholder="hungry?" aria-describedby="sizing-addon1" id="search-input">
-						</div>	 -->
-					<br>
-					<br>
-					<p class="col-sm-6 myaccount">
+				</div>
+				<div class="col-sm-3">
+					<h2>
+						<span class="text-center" id="title">Now What?</span>
+					</h2>
+
+					<p class="col-sm-12 myaccount">
 						<a href="login.html">Login To View Your Recipes</a>
 					</p>
-					<p class="col-sm-6 login_rmv">
+					<p class="col-sm-12 login_rmv">
 						<a href="login.html">Create An Account to Add New Recipes</a>
 					</p>
+					<p class="col-sm-12 ">
+						<a href="search.html">Search Our Collection of Recipes</a>
+					</p>
+				</div>
+				<div class="col-sm-12">
+					<h2>
+						<span class="text-center" id="title">Some Popular Recipes</span>
+					</h2>
+					<div class="col-sm-3" id="recipe_1">
+						<h3 id='recipe1_title' class="recipe_title">
+
+						</h3>
+						<img id='recipe1_image' src="#" class="recipe_image" />
+						<p id="recipe1_sdesc" class="recipe_desc">
+							
+						</p>
+						<a id="recipe1_url" href="#" class="recipe_url">
+
+						</a>
+					</div>
+					<div class="col-sm-3" id="recipe_2"></div>
+					<div class="col-sm-3" id="recipe_3"></div>
+					<div class="col-sm-3" id="recipe_4"></div>
 				</div>
 			</div>
 		</div>
