@@ -31,7 +31,9 @@
 
 
 	<style>
-
+		#imgPreview>img {
+			width: 200px!important;
+		}
 	</style>
 </head>
 
@@ -82,8 +84,13 @@
 			<br>
 
 			<label for="image">Image From the Web</label>
-			<input type="text" class="required form-control" placeholder="Image from Web" aria-describedby="sizing-addon2" name='image'
-			    id="image">
+			<input type="file" name="pic" accept="image/*" class="required form-control" placeholder="Image from Web" aria-describedby="sizing-addon2"
+			    name='image' id="image" value="upload" d onchange="handleFiles(this.files)">
+			<span id="imgPreview"></span>
+			<br>
+			<progress id="uploader" value="0" max="100">0%</progress>
+			<span id="uploadstatus"></span>
+
 			<br>
 
 			<label for="ispub">Make the Recipe Public</label>
@@ -117,7 +124,6 @@
 	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 	<script src="assets/js/timeago.js"></script>
 	<script src="assets/js/recipe.js"></script>
-	<script src="assets/js/app.js"></script>
 
 	<script>
 		// $(document).ready(function(){
@@ -181,12 +187,18 @@
 		};
 		firebase.initializeApp(config);
 
+
 		var database = firebase.database();
 		var defaultAuth = firebase.auth();
+		var img;
+		var thefile
+		var rImage;
+
+		console.log('defaultAuth')
 		console.log(defaultAuth)
 
-
 		firebase.auth().onAuthStateChanged(function (user) {
+			console.log('user')
 			console.log(user)
 			if (user) {
 				// User is signed in.
@@ -212,8 +224,65 @@
 				// No user is signed in.
 				$('.col-sm-10').html('<h2>Please login to add a new recipe</h2>')
 			}
-		});
+		}); //firebase auth
 
+
+
+		function handleFiles(files) {
+			$('#imgPreview').html('');
+			for (var i = 0; i < files.length; i++) {
+				file = files[i];
+
+				if (!file.type.startsWith('image/')) {
+					continue
+				}
+
+				img = document.createElement("img");
+				img.classList.add("obj");
+				img.file = file;
+				document.getElementById('imgPreview').appendChild(img);
+
+				var reader = new FileReader();
+				reader.onload = (function (aImg) {
+					return function (e) {
+						aImg.src = e.target.result;
+					};
+				})(img);
+				reader.readAsDataURL(file);
+			}
+		}
+
+		var v
+		// Create a root reference
+		var uploader = document.getElementById('uploader');
+		var fileButton = document.getElementById('image');
+		fileButton.addEventListener('change', function (e) {
+			$('#uploadstatus').html(
+				'<br>The image is uploading...<br><strong>Do not refresh the page or navigate away.<br><br></strong>')
+
+			var file = e.target.files[0];
+			var storageRef = firebase.storage().ref(uid + '/recipe_img/' + file.name);
+			var task = storageRef.put(file);
+			task.on('state_changed', function progress(snapshot) {
+				var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				uploader.value = percentage;
+				console.log('snapshot')
+				console.log(snapshot)
+				console.log('image url');
+				v = snapshot
+
+			}, function error(err) {
+				console.log(err)
+
+			}, function complete(data) {
+				console.log(data);
+				$('#uploadstatus').html('<br>Upload Complete!<br><br>')
+				console.log('snapshot in done');
+				console.log(v);
+				rImage = v.task.N.downloadURLs[0];
+				console.log(rImage)
+			});
+		});
 
 		//ADD Ingredient
 		$('#addIngredient').on('click', function () {
@@ -250,7 +319,13 @@
 				throw new Error('Please fill out all information');
 			} else {
 
-				firebase.initializeApp(config);
+				// firebase.initializeApp(config);
+				// var storageRef = firebase.storage().ref(uid + '/recipe_img/');
+				// console.log('storageRef')
+				// console.log(storageRef)
+
+
+
 
 				var rName = $('#recipe_name').val(),
 					rStory = $('#recipe_story').val(),
@@ -259,9 +334,9 @@
 					oTemp = $('#ovtemp').val(),
 					rTime = $('#cooktime').val(),
 					rServings = $('#servings').val(),
-					rImage = $('#image').val(),
 					rCategories = [],
 					isPub = 'Y'; //$('#ispub').val()
+
 
 				$('.ingredients').each(function (i, val) {
 					var v = $(val).val();
@@ -273,6 +348,7 @@
 					console.log(v)
 					rDirections.push(v);
 				})
+
 
 				$('.col-sm-10').html('<h2>Your Recipe has been added,</h2><p>Please Wait…</p>')
 				window.location = '#'
@@ -319,6 +395,7 @@
 		}
 		// });
 	</script>
+	<!-- <script src="assets/js/app.js"></script> -->
 
 </body>
 
