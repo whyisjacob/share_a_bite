@@ -1,4 +1,6 @@
-// Initialize Firebase
+/**
+ * new_recipe.html has hard-code from this file
+ */
 
 $(document).on('click','#menu', function(){
 	$('#navigation').toggleClass('hidden');

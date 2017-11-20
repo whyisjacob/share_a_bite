@@ -16,7 +16,7 @@
 <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-
+<!-- 
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
@@ -25,10 +25,8 @@
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/2.4.1/firebase-ui-auth.css" />
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/2.4.1/firebase-ui-auth.css" /> -->
 
-  <script>
-    </script>
 
 <div class="container">
 	<div class="col-sm-3 menu" id="menu">
@@ -51,7 +49,7 @@ NAVIGATION Menu Popup
 	<div><a href="index.html">Home</a></div>
 	<div><a href="user.html">Account</a></div>
 	<div><a href="new_recipe.html">Create a New Recipe</a></div>
-	<div><a href="future.html">Future Integrations</a></div>
+	<!-- <div><a href="future.html">Future Integrations</a></div> -->
 </aside>
 
 
