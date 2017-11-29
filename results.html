@@ -42,12 +42,12 @@
 			<section class='recipe'>
 				<h2 id="recipe_name" class="recipe_name"></h2>
 				<h3>
-					Added By: <a href="user.html" id="addby"></a>,
+					Added By: <span id="addby"></span>,
 					<time class="time timeago" datetime="2017-11-01"></time>
 				</h3>
 			</section>
 
-			<section id="categories" class="categories">
+			<section id="categories" class="categories hidden">
 				This would be perfect for &nbsp;
 				<a href="#">Breakfast</a> <a href="#">Lunch</a> <a href="#">Dinner</a>
 			</section>
@@ -162,15 +162,15 @@
 			};
 			var recipeKey = getUrlParameter('rkey');
 			// ABF testing var recipeKey = localStorage.getItem("postKey");
-			console.log(recipeKey)
+			// console.log(recipeKey)
 			if (recipeKey) {
 
-				console.log('true')
+				// console.log('true')
 				//GET RECIPE FROM DB
 				database.ref('/public-recipes/' + recipeKey).on("value", function (snapshot) {
 					// console.log(snapshot.val());
 					var v = snapshot.val();
-					console.log(v)
+					// console.log(v)
 
 					$('#recipe_name').html(v.rName);
 					$('.recipe_image').css({
@@ -179,6 +179,7 @@
 					$('#title').html(v.rName + ' Recipe');
 					$('#addby').html(v.enterBy);
 					$('#story').html(v.rStory);
+					$('#categories').hide();
 
 					$('time').attr('datetime', v.date);
 
@@ -213,12 +214,12 @@
 					jQuery("time.timeago").timeago();
 
 				}, function (errorObject) {
-					console.log("The read failed: " + errorObject.code);
+					// console.log("The read failed: " + errorObject.code);
 				});
 
 
 			} else {
-				console.log('false')
+				// console.log('false')
 				//GET RECIPE FROM SOMEWHERE ELSE
 				$('.col-md-10').html(
 					'<h2>Please search for a recipe or return to your account page if you are logged on to display a recipe</h2>')

@@ -100,7 +100,7 @@
 					<a href="search.html">Search Our Collection of Recipes</a>
 				</p>
 			</div>
-			<div class="col-sm-12">
+			<div class="col-sm-12 hidden">
 				<h2>
 					<span class="text-center" id="title">Some Popular Recipes</span>
 				</h2>
@@ -155,7 +155,7 @@
 
 
 		firebase.auth().onAuthStateChanged(function (user) {
-			console.log(user)
+			// console.log(user)
 			if (user) {
 				$('#username').html('Mayonnaise, ' + user.displayName + '!<br>Please Wait…')
 				$('.myaccount').html('<a href="user.html">Go to your account to view your recipes</a>');

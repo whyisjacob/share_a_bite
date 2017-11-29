@@ -134,7 +134,7 @@
 				if (user) {
 					// User is signed in.
 					$('#login').attr('href', 'user.html').html('My Account <span class="glyphicon glyphicon-user"></span>')
-					console.log(user);
+					// console.log(user);
 					$('#name').html(user.displayName)
 					$('#email').html(user.email)
 					$('#myimg').attr('src', user.photoURL);
@@ -150,11 +150,11 @@
 
 								//recipy key
 								var key = childSnapshot.key;
-								console.log(key)
+								// console.log(key)
 
 								//recipe data
 								var childData = childSnapshot.val();
-								console.log(childData)
+								// console.log(childData)
 
 								$('#recipe_display').prepend('<tr><td><h5>' + childData.rName + '</h5></td><td>' + childData.rStory +
 									'</td><td>' + childData.date + '</td><td> <a href="results.html?rkey=' + key +
@@ -173,7 +173,7 @@
 
 				} else {
 					// No user is signed in.
-					console.log('User not logged in')
+					// console.log('User not logged in')
 				}
 			});
 
