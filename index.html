@@ -66,7 +66,9 @@
 							<input type="text" class="form-control" placeholder="hungry?" aria-describedby="sizing-addon1" id="search-input">
 						</div> -->
 						<br>
-						<a href="#main"><span class="glyphicon glyphicon-chevron-down"></span></a>
+						<a href="#main">
+							<span class="glyphicon glyphicon-chevron-down"></span>
+						</a>
 					</h2>
 				</div>
 			</div>
@@ -74,7 +76,7 @@
 	</div>
 	<div class="container">
 		<div id="main" class="row">
-			<div class="content col-sm-9">
+			<div class="content col-sm-12">
 				<h2>
 					<span class="text-center" id="title">Our Mission</span>
 				</h2>
@@ -85,7 +87,7 @@
 					to Share A Bite.
 				</p>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 hidden">
 				<h2>
 					<span class="text-center" id="title">Now What?</span>
 				</h2>
@@ -100,6 +102,14 @@
 					<a href="search.html">Search Our Collection of Recipes</a>
 				</p>
 			</div>
+			<div class="col-sm-12 arrow-btn">
+				<div class="pulse-btn" onclick="window.location.href='login.html'">
+					<a href="login.html">Save Your Own Recipes Today</a>
+					<div class="bg"></div>
+				</div>
+			</div>
+
+
 			<div class="col-sm-12 hidden">
 				<h2>
 					<span class="text-center" id="title">Some Popular Recipes</span>
@@ -113,8 +123,8 @@
 
 					</p>
 					<a id="recipe1_url" href="#" class="recipe_url">
-	
-							</a>
+
+					</a>
 				</div>
 				<div class="col-sm-3" id="recipe_2"></div>
 				<div class="col-sm-3" id="recipe_3"></div>
@@ -127,7 +137,9 @@
 	<footer id="footer" class="footer">
 		<hr> © 2017 Share a Bite, Inc. All Rights reserved.
 		<a href="#">Privacy Policy</a> |
-		<a href="#">Terms of Use</a> <br><br>
+		<a href="#">Terms of Use</a>
+		<br>
+		<br>
 	</footer>
 	<!-- rapid api SDK -->
 	<script src='https://storage.googleapis.com/code-snippets/rapidapi.min.js'></script>
@@ -170,7 +182,7 @@
 		 * Initiate Typewriter
 		 */
 		var app = document.getElementById('hero-text');
-	
+
 		var typewriter = new Typewriter(app, {
 			loop: true
 		});
