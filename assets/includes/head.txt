@@ -37,7 +37,7 @@
 	</div>
 	<div class="col-sm-3 login">
 		<a href="login.html" id="login">Login <span class="glyphicon glyphicon-user"></span></a><br>
-		<a href="index.html" id="search">Search <span class="glyphicon glyphicon-search"></span></a>
+		<a href="index.html" id="search"> </a>
 	</div>
 </div>
 
